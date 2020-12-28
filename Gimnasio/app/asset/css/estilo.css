@@ -1,0 +1,26 @@
+body {
+    background-color: #f1f1f1;
+}
+
+.indexFondo {
+    background-image: url("../img/fondo.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+
+/*---------------------------------*/
+
+.form_login {
+    background-color: white;
+    border: solid teal;
+    padding-bottom: 50px;
+    padding-top: 30px;
+}
+
+.form_new {
+    padding: 30px;
+    background-color: white;
+    border: solid 1px teal;
+}
