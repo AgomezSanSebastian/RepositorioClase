@@ -556,8 +556,140 @@ class UserController extends BaseController
     }
 
 
+    /**
+     * 
+     */
     public function editarPerfil(){
-        
+        /**
+         * Método de la clase controlador que permite actualizar los datos del usuario
+         * cuyo id coincide con el que se pasa como parámetro desde la vista de listado
+         * a través de GET
+         */
+        // Array asociativo que almacenará los mensajes de error que se generen por cada campo
+        $errores = array();
+        // Inicializamos valores de los campos de texto
+        $valnif = "";
+        $valnombre = "";
+        $valape1 = "";
+        $valape2 = "";
+        $valemail = "";
+        $valtele = "";
+        $valdire = "";
+        $valpass = "";
+        $valid = "";
+        $login = $_GET['login'];
+
+
+        // Si se ha pulsado el botón actualizar...
+        if (isset($_POST['submit'])) { //Realizamos la actualización con los datos existentes en los campos
+            
+            $newnif = filter_var($_POST['nif'], FILTER_SANITIZE_STRING);
+            $newnombre = filter_var($_POST['nombre'], FILTER_SANITIZE_STRING);
+            $newape1  = filter_var($_POST['apellido1'], FILTER_SANITIZE_STRING);
+            $newape2 = filter_var($_POST['apellido2'], FILTER_SANITIZE_STRING);
+            $newemail = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+            $newtele = filter_var($_POST['telefono'], FILTER_SANITIZE_STRING);
+            $newdire = filter_var($_POST['direccion'], FILTER_SANITIZE_STRING);
+            $newpass = sha1($_POST['password']);
+            $newid = $_POST['id'];
+
+
+            if (count($errores) == 0) {
+                //Ejecutamos la instrucción de actualización a la que le pasamos los valores
+                $resultModelo = $this->modelo->actuser([
+                    'id' => $newid,
+                    'nif' => $newnif,
+                    'nombre' => $newnombre,
+                    'apellido1' => $newape1,
+                    'apellido2' => $newape2,
+                    'email' => $newemail,
+                    'telefono' => $newtele,
+                    'direccion' => $newdire,
+                    'password' => $newpass,
+                ]);
+                //Analizamos cómo finalizó la operación de registro y generamos un mensaje
+                //indicativo del estado correspondiente
+                if ($resultModelo["correcto"]) :
+                    $this->mensajes[] = [
+                        "tipo" => "success",
+                        "mensaje" => "El usuario se actualizó correctamente!! :)"
+                    ];
+                else :
+                    $this->mensajes[] = [
+                        "tipo" => "danger",
+                        "mensaje" => "El usuario no pudo actualizarse!! :( <br/>({$resultModelo["error"]})"
+                    ];
+                endif;
+            } else {
+                $this->mensajes[] = [
+                    "tipo" => "danger",
+                    "mensaje" => "Datos de registro de usuario erróneos!! :("
+                ];
+            }
+
+            // Obtenemos los valores para mostrarlos en los campos del formulario
+            $valid = $newid;
+            $valnombre = $newnombre;
+            $valape1 = $newape1;
+            $valape2  = $newape2;            
+            $valnif = $newnif;
+            $valdire = $newdire;
+            $valemail = $newemail;
+            $valtele = $newtele;
+            $valpass = $newpass;
+            
+        } else { //Estamos rellenando los campos con los valores recibidos del listado
+            if (isset($_GET['login'])) {
+                $login = $_GET['login'];
+                //Ejecutamos la consulta para obtener los datos del usuario #id
+                $resultModelo = $this->modelo->buscarPerfil($login);
+                //Analizamos si la consulta se realiz´correctamente o no y generamos un
+                //mensaje indicativo
+                if ($resultModelo["correcto"]) :
+                    $this->mensajes[] = [
+                        "tipo" => "success",
+                        "mensaje" => "Los datos del usuario se obtuvieron correctamente!! :)"
+                    ];
+                    $valid = $resultModelo["datos"]["id"];
+                    $valnif = $resultModelo["datos"]["nif"];
+                    $valnombre = $resultModelo["datos"]["nombre"];
+                    $valape1 = $resultModelo["datos"]["apellido1"];
+                    $valape2 = $resultModelo["datos"]["apellido2"];
+                    $valemail = $resultModelo["datos"]["email"];
+                    $valtele = $resultModelo["datos"]["telefono"];
+                    $valdire = $resultModelo["datos"]["direccion"];
+                    $valpass = $resultModelo["datos"]["password"];
+
+                else :
+                    $this->mensajes[] = [
+                        "tipo" => "danger",
+                        "mensaje" => "No se pudieron obtener los datos de activiadades!! :( <br/>({$resultModelo["error"]})"
+                    ];
+                endif;
+            }
+        }
+        //Preparamos un array con todos los valores que tendremos que rellenar en
+        //la vista adduser: título de la página y campos del formulario
+        $parametros = [
+            "tituloventana" => "Base de Datos con PHP y PDO",
+            "datos" => [
+
+                'id' => $valid,
+                'nif' => $valnif,
+                'nombre' => $valnombre,
+                'apellido1' => $valape1,
+                'apellido2' => $valape2,
+                'email' => $valemail,
+                'telefono' => $valtele,
+                'direccion' => $valdire,
+                'password' => $valpass
+            ],
+            "mensajes" => $this->mensajes,
+            "login" => $login
+        ];
+        //Mostramos la vista actuser
+        $this->view->show("EditarPerfil", $parametros);
+
     }
 
     //------------------------------------------------------------------------------

@@ -356,6 +356,35 @@ class UserModel extends BaseModel
    }
 
    /**
+    * 
+    */
+   public function buscarPerfil($login)
+   {
+      $return = [
+         "correcto" => FALSE,
+         "datos" => NULL,
+         "error" => NULL
+      ];
+
+      if ($login) {
+         try {
+            $sql = "SELECT * FROM usuario WHERE login=:login";
+            $query = $this->db->prepare($sql);
+            $query->execute(['login' => $login]);
+            //Supervisamos que la consulta se realizó correctamente... 
+            if ($query) {
+               $return["correcto"] = TRUE;
+               $return["datos"] = $query->fetch(PDO::FETCH_ASSOC);
+            } // o no :(
+         } catch (PDOException $ex) {
+            $return["error"] = $ex->getMessage();
+            //die();
+         }
+      }
+
+      return $return;
+   }
+   /**
     * Cambia el rol del usuario, pasa a de usuario normal a administrador o al revés
     * @param type $datos 
     * @return type

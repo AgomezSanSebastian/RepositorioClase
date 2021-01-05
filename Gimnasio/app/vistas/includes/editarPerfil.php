@@ -12,7 +12,7 @@
         } ?>
 
         <div class="col-lg-6 form_login mt-5">
-            <form class="form-signin" method="POST" action="?controller=User&accion=editarUser1&id=<?= $datos['id'] ?>" >
+            <form class="form-signin" method="POST" action="?controller=User&accion=editarPerfil&login=<?= $login ?>" >
 
 
 
@@ -51,7 +51,7 @@
                 <div class="form-group row mt-4">
                     <label for="password" class="col-lg-4 col-form-label text-center">Password: </label>
                     <div class="col-lg-7 text-left">
-                        <input type="password" class="form-control" id="password" name="password" required value="<?= $datos["password"] ?>" />
+                        <input type="password" class="form-control" id="password" name="password" required />
                     </div>
                 </div>
                 <div class="form-group row">
@@ -67,18 +67,27 @@
                     </div>
                 </div>
 
+                <div class="row mt-5">
+                    <label class="col-lg-5"></label>
+                    <button class="btn btn-secondary btn-lg" type="submit" name="submit">Ingresar</button>
+                </div>
+
                 <div class="form-group row invisible">
                     <div class="col-lg-7 text-left">
                         <input type="text" class="form-control" id="id" name="id" value="<?= $datos["id"] ?>" />
                     </div>
                 </div>
-
-
-                <div class="row mt-5">
-                    <label class="col-lg-5"></label>
-                    <button class="btn btn-secondary btn-lg" type="submit" name="submit">Ingresar</button>
+                <div class="form-group row invisible">
+                    <div class="col-lg-7 text-left">
+                        <input type="text" class="form-control" id="login" name="login" value="<?= $login ?>" />
+                    </div>
                 </div>
+
+
+                
             </form>
+
+        </pre>
         </div>
     </div>
 </div>
