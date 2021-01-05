@@ -50,8 +50,8 @@ class LoginController extends BaseController
                 $this->view->show("Login", $parametros);
             } else {
                 $login = $_POST['login'];
-                // $password = sha1($_POST['password']);
-                $password = $_POST['password'];
+                $password = sha1($_POST['password']);
+                //$password = $_POST['password'];
 
                 //Preguntamos por el usuario y contraseña a la bbdd para saber si son correcto o no
                 $resultado = $this->modelo->isUser([
@@ -143,7 +143,197 @@ class LoginController extends BaseController
         }
     }
 
-    public function registrar() {
-        
+    public function registrar()
+    {
+
+        // Array asociativo que almacenará los mensajes de error que se generen por cada campo
+        $errores = array();
+
+        // Si se ha pulsado el botón guardar...
+        if (isset($_POST) && !empty($_POST) && isset($_POST['submit'])) { // y hemos recibido las variables del formulario y éstas no están vacías...
+            //Sanitizamos los valores que nos llegan
+            $nif = filter_var($_POST['nif'], FILTER_SANITIZE_STRING);
+            $nombre = filter_var($_POST['nombre'], FILTER_SANITIZE_STRING);
+            $apellido1 = filter_var($_POST['apellido1'], FILTER_SANITIZE_STRING);
+            $apellido2 = filter_var($_POST['apellido2'], FILTER_SANITIZE_STRING);
+            $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+            $telefono = filter_var($_POST['telefono'], FILTER_SANITIZE_STRING);
+            $direccion = filter_var($_POST['direccion'], FILTER_SANITIZE_STRING);
+            $login = filter_var($_POST['login'], FILTER_SANITIZE_STRING);
+            $password = sha1($_POST['password']);
+            $rol = $_POST['rol'];
+
+            /* Realizamos la carga de la imagen en el servidor */
+            // Comprobamos que el campo tmp_name tiene un valor asignado para asegurar que hemos
+            // recibido la imagen correctamente
+            // Definimos la variable $imagen que almacenará el nombre de imagen
+            // que almacenará la Base de Datos inicializada a NULL
+            $imagen = null;
+
+            if (isset($_FILES["imagen"]) && (!empty($_FILES["imagen"]["tmp_name"]))) {
+                // Verificamos la carga de la imagen
+                // Comprobamos si existe el directorio fotos, y si no, lo creamos
+                if (!is_dir("fotos")) {
+                    $dir = mkdir("fotos", 0777, true);
+                } else {
+                    $dir = true;
+                }
+                // Ya verificado que la carpeta uploads existe movemos el fichero seleccionado a dicha carpeta
+                if ($dir) {
+                    //Para asegurarnos que el nombre va a ser único...
+                    $nombrefichimg = $_FILES["imagen"]["name"];
+                    // Movemos el fichero de la carpeta temportal a la nuestra
+                    $movfichimg = move_uploaded_file($_FILES["imagen"]["tmp_name"], "fotos/" . $nombrefichimg);
+                    $imagen = $nombrefichimg;
+
+                    // Verficamos que la carga se ha realizado correctamente
+                    if ($movfichimg) {
+                        $imagencargada = true;
+                    } else {
+                        $imagencargada = false;
+                        $this->mensajes[] = [
+                            "tipo" => "danger",
+                            "mensaje" => "Error: La imagen no se cargó correctamente! :("
+                        ];
+                        $errores["imagen"] = "Error: La imagen no se cargó correctamente! :(";
+                    }
+                }
+            }
+
+            //Si no se cumple la expresión regular se genera un error especifico.
+            if (!preg_match("/^\d{8}[a-zA-Z]{1}$/", $nif)) {
+                $this->mensajes[] = [
+                    "campo" => "nif",
+                    "tipo" => "danger",
+                    "mensaje" => "NIF no valido."
+                ];
+                $errores["nif"] = "Error: No valido";
+                $parametros = ["mensajes" => $this->mensajes];
+            }
+
+            if (!preg_match("/^[a-zA-Z]{1,50}$/", $nombre)) {
+                $this->mensajes[] = [
+                    "campo" => "nombre",
+                    "tipo" => "danger",
+                    "mensaje" => "Nombre no valido."
+                ];
+                $errores["nombre"] = "Error: No valido";
+                $parametros = ["mensajes" => $this->mensajes];
+            }
+
+            if (!preg_match("/^[a-zA-Z]{1,50}$/", $apellido1)) {
+                $this->mensajes[] = [
+                    "campo" => "apellido1",
+                    "tipo" => "danger",
+                    "mensaje" => "Apellido no valido."
+                ];
+                $errores["apellido1"] = "Error: No valido";
+                $parametros = ["mensajes" => $this->mensajes];
+            }
+
+            if (!preg_match("/^[a-zA-Z]{1,50}$/", $apellido2)) {
+                $this->mensajes[] = [
+                    "campo" => "apellido2",
+                    "tipo" => "danger",
+                    "mensaje" => "Apellido no valido."
+                ];
+                $errores["apellido2"] = "Error: No valido";
+                $parametros = ["mensajes" => $this->mensajes];
+            }
+
+            if (!preg_match("/^[a-zA-Z0-9]{1,50}$/", $login)) {
+                $this->mensajes[] = [
+                    "campo" => "login",
+                    "tipo" => "danger",
+                    "mensaje" => "Login no valido."
+                ];
+                $errores["login"] = "Error: No valido";
+                $parametros = ["mensajes" => $this->mensajes];
+            }
+
+            if (!preg_match("/^[6-9]{1}[0-9]{8}$/", $telefono)) {
+                $this->mensajes[] = [
+                    "campo" => "telefono",
+                    "tipo" => "danger",
+                    "mensaje" => "Número no valido."
+                ];
+                $errores["telefono"] = "Error: No valido";
+                $parametros = ["mensajes" => $this->mensajes];
+            }
+
+            if (!preg_match("/[a-zA-Z0-9_-]{1,200}/", $direccion)) {
+                $this->mensajes[] = [
+                    "campo" => "direccion",
+                    "tipo" => "danger",
+                    "mensaje" => "Caracter no valido. Prueba con un guión - ó _ "
+                ];
+                $errores["direccion"] = "Error: No valido";
+                $parametros = ["mensajes" => $this->mensajes];
+            }
+
+            //Hay errores 
+            if (count($errores) > 0) {
+                $this->view->show("Registro", $parametros);
+            }
+
+            // Si no se han producido errores realizamos el registro del usuario
+            if (count($errores) == 0) {
+                $resultModelo = $this->modelo->adduser([
+                    'nif' => $nif,
+                    'nombre' => $nombre,
+                    'apellido1' => $apellido1,
+                    'apellido2' => $apellido2,
+                    'imagen' => $imagen,
+                    'login' => $login,
+                    'password' => $password,
+                    'email' => $email,
+                    'telefono' => $telefono,
+                    'direccion' => $direccion,
+                    'rol' => $rol
+                ]);
+                if ($resultModelo["correcto"]) :
+                    $this->mensajes[] = [
+                        "tipo" => "success",
+                        "mensaje" => "El usuarios se registró correctamente!! ESPERA A QUE UN ADMIN TE VALIDE :)"
+                    ];
+                else :
+                    $this->mensajes[] = [
+                        "tipo" => "danger",
+                        "mensaje" => "El usuario no pudo registrarse!! :( <br />({$resultModelo["error"]})"
+                    ];
+                endif;
+                //$parametros = ["mensajes" => $this->mensajes];
+                //$this->view->show("Registro", $parametros);
+            } else {
+                $this->mensajes[] = [
+                    "tipo" => "danger",
+                    "mensaje" => "Datos de registro de usuario erróneos!! :("
+                ];
+                //$parametros = ["mensajes" => $this->mensajes];
+            }
+        }
+
+        //Preparamos un array con todos los valores que tendremos que rellenar en
+        //la vista adduser: título de la página y campos del formulario
+        $parametros = [
+            "tituloventana" => "Base de Datos con PHP y PDO",
+            "datos" => [
+                'nif' => $nif,
+                'nombre' => $nombre,
+                'apellido1' => $apellido1,
+                'apellido2' => $apellido2,
+                'imagen' => $imagen,
+                'login' => $login,
+                'password' => $password,
+                'email' => $email,
+                'telefono' => $telefono,
+                'direccion' => $direccion,
+                'rol' => $rol
+            ],
+            "mensajes" => $this->mensajes,
+            
+        ];
+        //Mostramos la vista actuser
+        $this->view->show("Registro", $parametros);
     }
 }

@@ -13,7 +13,7 @@
                         Usuario
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarUsuario">
-                        <a class="dropdown-item" href="?controller=User&accion=listarNoActivos">Modificar usuario</a>
+                        <a class="dropdown-item" href="?controller=User&accion=editarPerfil&id=<?=$_SESSION['login'];?>">Modificar perfil</a>
                     </div>
                 </li>
 
@@ -22,8 +22,9 @@
                         Actividades
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarActividades">
-                        <a class="dropdown-item" href="home.php?page=listaActividades">Listar Actividades</a>
+                        <a class="dropdown-item" href="?controller=User&accion=listarActividadesAdmin">Listar Actividades</a>
                         <a class="dropdown-item" href="home.php?page=horario">Horario</a>
+                        <a class="dropdown-item" href="home.php?page=horario">Clases apuntadas</a>
                     </div>
                 </li>
 

@@ -8,12 +8,19 @@
         <div class="col-lg-6 form_login mt-5">
             <form class="form-signin" method="POST" action="?controller=Login&accion=registrar" enctype="multipart/form-data">
 
+                <!--Mostramos los mensajes que se hayan generado al realizar el listado-->
+                <?php if (isset($mensajes)) {
+                    foreach ($mensajes as $mensaje) : ?>
+                        <div class="alert alert-<?= $mensaje["tipo"] ?> mt-5"><?= $mensaje["mensaje"] ?></div>
+                <?php endforeach;
+                } ?>
+
                 <div class="form-group row invisible">
                     <label for="rol" class="col-lg-4 col-form-label text-center">rol: </label>
                     <div class="col-lg-7 text-left">
                         <input type="text" class="form-control" id="rol" name="rol" placeholder="2" value="<?php if (isset($_SESSION['nombre'])) {
                                                                                                                 echo $_SESSION['nombre'];
-                                                                                                            } else{
+                                                                                                            } else {
                                                                                                                 echo '2';
                                                                                                             }
                                                                                                             ?>" />
@@ -25,6 +32,13 @@
                         <input type="text" class="form-control" id="nombre" name="nombre" value="<?php if (isset($_SESSION['nombre'])) {
                                                                                                         echo $_SESSION['nombre'];
                                                                                                     } ?>" />
+                        <?php if (isset($mensajes)) {
+                            foreach ($mensajes as $mensaje) :
+                                if ($mensaje["campo"] == "nombre") { ?>
+                                    <div class="alert alert-<?= $mensaje["tipo"] ?>"><?= $mensaje["mensaje"] ?></div>
+                        <?php }
+                            endforeach;
+                        } ?>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -33,6 +47,13 @@
                         <input type="text" class="form-control" id="apellido1" name="apellido1" value="<?php if (isset($_SESSION['apellido1'])) {
                                                                                                             echo $_SESSION['apellido1'];
                                                                                                         } ?>" />
+                        <?php if (isset($mensajes)) {
+                            foreach ($mensajes as $mensaje) :
+                                if ($mensaje["campo"] == "apellido1") { ?>
+                                    <div class="alert alert-<?= $mensaje["tipo"] ?>"><?= $mensaje["mensaje"] ?></div>
+                        <?php }
+                            endforeach;
+                        } ?>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -41,6 +62,13 @@
                         <input type="text" class="form-control" id="apellido2" name="apellido2" value="<?php if (isset($_SESSION['apellido2'])) {
                                                                                                             echo $_SESSION['apellido2'];
                                                                                                         } ?>" />
+                        <?php if (isset($mensajes)) {
+                            foreach ($mensajes as $mensaje) :
+                                if ($mensaje["campo"] == "apellido2") { ?>
+                                    <div class="alert alert-<?= $mensaje["tipo"] ?>"><?= $mensaje["mensaje"] ?></div>
+                        <?php }
+                            endforeach;
+                        } ?>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -49,15 +77,29 @@
                         <input type="text" class="form-control" id="nif" name="nif" maxlength="9" value="<?php if (isset($_SESSION['nif'])) {
                                                                                                                 echo $_SESSION['nif'];
                                                                                                             } ?>" />
+                        <?php if (isset($mensajes)) {
+                            foreach ($mensajes as $mensaje) :
+                                if ($mensaje["campo"] == "nif") { ?>
+                                    <div class="alert alert-<?= $mensaje["tipo"] ?>"><?= $mensaje["mensaje"] ?></div>
+                        <?php }
+                            endforeach;
+                        } ?>
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label for="imagen" class="col-lg-4 col-form-label text-center">Imagen: </label>
-                    <div class="col-lg-7 ">                        
+                    <div class="col-lg-7 ">
                         <input type="file" class="form-control " id="imagen" name="imagen" value="<?php if (isset($_SESSION['imagen'])) {
-                                                                                                                echo $_SESSION['imagen'];
-                                                                                                            } ?>" />/>
+                                                                                                        echo $_SESSION['imagen'];
+                                                                                                    } ?>" />
+                        <?php if (isset($mensajes)) {
+                            foreach ($mensajes as $mensaje) :
+                                if ($mensaje["campo"] == "imagen") { ?>
+                                    <div class="alert alert-<?= $mensaje["tipo"] ?>"><?= $mensaje["mensaje"] ?></div>
+                        <?php }
+                            endforeach;
+                        } ?>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -66,6 +108,13 @@
                         <input type="email" class="form-control" id="email" name="email" value="<?php if (isset($_SESSION['email'])) {
                                                                                                     echo $_SESSION['email'];
                                                                                                 } ?>" />
+                        <?php if (isset($mensajes)) {
+                            foreach ($mensajes as $mensaje) :
+                                if ($mensaje["campo"] == "email") { ?>
+                                    <div class="alert alert-<?= $mensaje["tipo"] ?>"><?= $mensaje["mensaje"] ?></div>
+                        <?php }
+                            endforeach;
+                        } ?>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -74,6 +123,13 @@
                         <input type="text" class="form-control" id="login" name="login" required value="<?php if (isset($_SESSION['login'])) {
                                                                                                             echo $_SESSION['login'];
                                                                                                         } ?>" />
+                        <?php if (isset($mensajes)) {
+                            foreach ($mensajes as $mensaje) :
+                                if ($mensaje["campo"] == "login") { ?>
+                                    <div class="alert alert-<?= $mensaje["tipo"] ?>"><?= $mensaje["mensaje"] ?></div>
+                        <?php }
+                            endforeach;
+                        } ?>
                     </div>
                 </div>
                 <div class="form-group row mt-4">
@@ -82,6 +138,13 @@
                         <input type="password" class="form-control" id="password" name="password" required value="<?php if (isset($_SESSION['password'])) {
                                                                                                                         echo $_SESSION['password'];
                                                                                                                     } ?>" />
+                        <?php if (isset($mensajes)) {
+                            foreach ($mensajes as $mensaje) :
+                                if ($mensaje["campo"] == "password") { ?>
+                                    <div class="alert alert-<?= $mensaje["tipo"] ?>"><?= $mensaje["mensaje"] ?></div>
+                        <?php }
+                            endforeach;
+                        } ?>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -90,6 +153,13 @@
                         <input type="text" class="form-control" id="telefono" name="telefono" value="<?php if (isset($_SESSION['telefono'])) {
                                                                                                             echo $_SESSION['telefono'];
                                                                                                         } ?>" />
+                        <?php if (isset($mensajes)) {
+                            foreach ($mensajes as $mensaje) :
+                                if ($mensaje["campo"] == "telefono") { ?>
+                                    <div class="alert alert-<?= $mensaje["tipo"] ?>"><?= $mensaje["mensaje"] ?></div>
+                        <?php }
+                            endforeach;
+                        } ?>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -98,6 +168,13 @@
                         <input type="text" class="form-control" id="direccion" name="direccion" value="<?php if (isset($_SESSION['direccion'])) {
                                                                                                             echo $_SESSION['direccion'];
                                                                                                         } ?>" />
+                        <?php if (isset($mensajes)) {
+                            foreach ($mensajes as $mensaje) :
+                                if ($mensaje["campo"] == "direccion") { ?>
+                                    <div class="alert alert-<?= $mensaje["tipo"] ?>"><?= $mensaje["mensaje"] ?></div>
+                        <?php }
+                            endforeach;
+                        } ?>
                     </div>
                 </div>
 

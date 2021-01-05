@@ -7,8 +7,8 @@
 
 <body>
 
-  <?php require 'includes/navAdmin.php'; ?>
-  <?php require 'includes/listarNoActivados.php'; ?>
+  <?php require 'includes/navUser.php'; ?>
+  <?php require 'includes/listarActividades.php'; ?>
   <?php require 'includes/footer.php'; ?>
 
 </body>

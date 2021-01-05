@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-01-2021 a las 10:50:37
+-- Tiempo de generación: 05-01-2021 a las 10:54:46
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.10
 
@@ -33,6 +33,15 @@ CREATE TABLE `actividades` (
   `descripcion` varchar(300) NOT NULL,
   `aforo` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `actividades`
+--
+
+INSERT INTO `actividades` (`id`, `nombre`, `descripcion`, `aforo`) VALUES
+(1, 'Ciclismo Indoor', 'El ciclismo indoor o spinning, como se le conoce comúnmente, se define como una actividad física colectiva, realizada sobre una bicicleta especialmente diseñada para tal efecto, a un ritmo determinado, en la que se efectúa un trabajo predominantemente cardiovascular', 20),
+(2, 'Pilates', 'Pilates es un método de ejercicio y movimiento físico diseñado para estirar, fortalecer y equilibrar el cuerpo. Con la práctica sistemática de ejercicios específicos junto con los patrones de respiración, Pilates ha demostrado tener un valor incalculable no sólo para las personas que quieren mantene', 15),
+(8, 'Boxeo', 'El boxeo, en un primer pensamiento, lo asociamos a un deporte de contacto, en el que dos personas combaten utilizando sólo sus puños, los cuales se cubren con unos guantes especiales. En el que su principal objetivo es golpear el mayor número de veces al contrincante por encima de su cintura y dentr', 12);
 
 -- --------------------------------------------------------
 
@@ -123,8 +132,9 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `nif`, `nombre`, `apellido1`, `apellido2`, `imagen`, `login`, `password`, `email`, `telefono`, `direccion`, `rol`) VALUES
-(1, '26084238F', 'admin', 'adminitrador', 'administrador', '', 'admin', 'admin', 'admin@admin.com', 654654654, 'C/Huelva', 0),
-(2, '26084238A', 'user', 'user apel', 'user otro apel', '', 'user', 'user', 'user@user.com', 654321123, 'Hola', 1);
+(3, '12312312E', 'adri', 'gomez', 'gomez', 'usuario.jpg', 'adri', '83b621ca1ac1f7df26124821387af790d0f22e4f', 'adrigoluna@hotmail.com', 666777888, 'Duque de Ahumada', 1),
+(16, '12312312R', 'maria', 'maria', 'mira', 'usuaria.jpg', 'mari', '5d95cb27f49aafe1eac579adf55ae18deeb49b8c', 'maia@miya.com', 666777822, 'huelva', 1),
+(18, '44221362k', 'admin', 'admin', 'admin', 'admin.jpg', 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'admin@admin.com', 666777822, 'Duque de Ahumada', 0);
 
 --
 -- Índices para tablas volcadas
@@ -170,7 +180,8 @@ ALTER TABLE `tramo_usuario`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `rol` (`rol`);
+  ADD UNIQUE KEY `login` (`login`),
+  ADD KEY `rol` (`rol`) USING BTREE;
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -180,7 +191,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `actividades`
 --
 ALTER TABLE `actividades`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `mensajes`
@@ -204,7 +215,7 @@ ALTER TABLE `tramo_usuario`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Restricciones para tablas volcadas

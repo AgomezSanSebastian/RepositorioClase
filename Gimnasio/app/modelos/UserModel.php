@@ -248,12 +248,12 @@ class UserModel extends BaseModel
 
       try {
          //Inicializamos la transacción
-         $this->conexion->beginTransaction();
+         $this->db->beginTransaction();
          //Definimos la instrucción SQL parametrizada 
          $sql = "INSERT INTO `usuario`( `nif`, `nombre`, `apellido1`, `apellido2`, `imagen`, `login`, `password`, `email`, `telefono`, `direccion`, `rol`) 
                 VALUES (:nif,:nombre,:apellido1,:apellido2,:imagen,:login,:password,:email,:telefono,:direccion,:rol)";
          // Preparamos la consulta...
-         $query = $this->conexion->prepare($sql);
+         $query = $this->db->prepare($sql);
          // y la ejecutamos indicando los valores que tendría cada parámetro
          $query->execute([
             'nif' => $datos["nif"],
@@ -269,11 +269,11 @@ class UserModel extends BaseModel
             'rol' => $datos["rol"]
          ]); //Supervisamos si la inserción se realizó correctamente... 
          if ($query) {
-            $this->conexion->commit(); // commit() confirma los cambios realizados durante la transacción
+            $this->db->commit(); // commit() confirma los cambios realizados durante la transacción
             $return["correcto"] = TRUE;
          } // o no :(
       } catch (PDOException $ex) {
-         $this->conexion->rollback(); // rollback() se revierten los cambios realizados durante la transacción
+         $this->db->rollback(); // rollback() se revierten los cambios realizados durante la transacción
          $return["error"] = $ex->getMessage();
          //die();
       }
@@ -295,16 +295,16 @@ class UserModel extends BaseModel
 
       try {
          //Inicializamos la transacción
-         $this->conexion->beginTransaction();
+         $this->db->beginTransaction();
          //Definimos la instrucción SQL parametrizada 
-         $sql = "UPDATE `usuario` SET `nif`= :nif,`nombre`= :nombre,`apellido1`= :apellido1,`apellido2`= :apellido2,`imagen`= :imagen,`password`= :password,`email`= :email,`telefono`= :telefono,`direccion`= :direccion WHERE id=:id";
-         $query = $this->conexion->prepare($sql);
+         $sql = "UPDATE `usuario` SET `nif`= :nif,`nombre`= :nombre,`apellido1`= :apellido1,`apellido2`= :apellido2,`password`= :password,`email`= :email,`telefono`= :telefono,`direccion`= :direccion WHERE id=:id";
+         $query = $this->db->prepare($sql);
          $query->execute([
+            'id' => $datos['id'],
             'nif' => $datos["nif"],
             'nombre' => $datos["nombre"],
             'apellido1' => $datos["apellido1"],
             'apellido2' => $datos["apellido2"],
-            'imagen' => $datos["imagen"],
             'password' => $datos["password"],
             'email' => $datos["email"],
             'telefono' => $datos["telefono"],
@@ -312,11 +312,11 @@ class UserModel extends BaseModel
          ]);
          //Supervisamos si la inserción se realizó correctamente... 
          if ($query) {
-            $this->conexion->commit();  // commit() confirma los cambios realizados durante la transacción
+            $this->db->commit();  // commit() confirma los cambios realizados durante la transacción
             $return["correcto"] = TRUE;
          } // o no :(
       } catch (PDOException $ex) {
-         $this->conexion->rollback(); // rollback() se revierten los cambios realizados durante la transacción
+         $this->db->rollback(); // rollback() se revierten los cambios realizados durante la transacción
          $return["error"] = $ex->getMessage();
          //die();
       }
@@ -371,7 +371,7 @@ class UserModel extends BaseModel
          //Inicializamos la transacción
          $this->db->beginTransaction();
          //Definimos la instrucción SQL parametrizada 
-         $sql = "UPDATE usuario SET rol= :rol WHERE id=:id";
+         $sql = "UPDATE usuario SET rol=:rol WHERE id=:id";
          $query = $this->db->prepare($sql);
          $query->execute([
             'id' => $datos["id"],
@@ -396,14 +396,24 @@ class UserModel extends BaseModel
     */
    public function faltaPorActivar()
    {
+      $return = [
+         "correcto" => FALSE,
+         "datos" => NULL,
+         "error" => NULL
+      ];
       //Realizamos la consulta...
-      $sql = "SELECT count(*) FROM usuario WHERE rol = '2'";
-      // Hacemos directamente la consulta al no tener parámetros
-      $resultsquery = $this->db->query($sql);
-      //Supervisamos si la inserción se realizó correctamente... 
-      if ($resultsquery) :
-         $return = $resultsquery->fetch();;
-      endif; // o no :(
+      try {  //Definimos la instrucción SQL  
+         $sql = "SELECT * FROM usuario WHERE rol = '2'";
+         // Hacemos directamente la consulta al no tener parámetros
+         $resultsquery = $this->db->query($sql);
+         //Supervisamos si la inserción se realizó correctamente... 
+         if ($resultsquery) :
+            $return["correcto"] = TRUE;
+            $return["datos"] = $resultsquery->fetchAll(PDO::FETCH_ASSOC);
+         endif; // o no :(
+      } catch (PDOException $ex) {
+         $return["error"] = $ex->getMessage();
+      }
 
       return $return;
    }
@@ -462,6 +472,178 @@ class UserModel extends BaseModel
       } catch (PDOException $ex) {
          $return["error"] = $ex->getMessage();
          //die();
+      }
+
+      return $return;
+   }
+
+   //------------------------------------------------------------------------------
+   //---------------------------------- ACTIVIDADES -------------------------------
+   //------------------------------------------------------------------------------
+
+   /**
+    * 
+    */
+   public function listarActiv()
+   {
+      $return = [
+         "correcto" => FALSE,
+         "datos" => NULL,
+         "error" => NULL
+      ];
+      //Realizamos la consulta...
+      try {  //Definimos la instrucción SQL  
+         $sql = "SELECT * FROM actividades";
+         // Hacemos directamente la consulta al no tener parámetros
+         $resultsquery = $this->db->query($sql);
+         //Supervisamos si la inserción se realizó correctamente... 
+         if ($resultsquery) :
+            $return["correcto"] = TRUE;
+            $return["datos"] = $resultsquery->fetchAll(PDO::FETCH_ASSOC);
+         endif; // o no :(
+      } catch (PDOException $ex) {
+         $return["error"] = $ex->getMessage();
+      }
+
+      return $return;
+   }
+
+   /**
+    * 
+    */
+   public function agregarActiv($datos)
+   {
+      $return = [
+         "correcto" => FALSE,
+         "error" => NULL
+      ];
+
+      try {
+         //Inicializamos la transacción
+         $this->db->beginTransaction();
+         //Definimos la instrucción SQL parametrizada 
+         $sql = "INSERT INTO `actividades`( `nombre`, `descripcion`, `aforo`) 
+                VALUES (:nombre,:descripcion,:aforo)";
+         // Preparamos la consulta...
+         $query = $this->db->prepare($sql);
+         // y la ejecutamos indicando los valores que tendría cada parámetro
+         $query->execute([
+            'nombre' => $datos["nombre"],
+            'descripcion' => $datos["descripcion"],
+            'aforo' => $datos["aforo"]
+         ]); //Supervisamos si la inserción se realizó correctamente... 
+         if ($query) {
+            $this->db->commit(); // commit() confirma los cambios realizados durante la transacción
+            $return["correcto"] = TRUE;
+         } // o no :(
+      } catch (PDOException $ex) {
+         $this->db->rollback(); // rollback() se revierten los cambios realizados durante la transacción
+         $return["error"] = $ex->getMessage();
+         //die();
+      }
+   }
+
+   /**
+    * 
+    */
+   public function editarActividad($datos)
+   {
+      $return = [
+         "correcto" => FALSE,
+         "error" => NULL
+      ];
+
+      try {
+         //Inicializamos la transacción
+         $this->db->beginTransaction();
+         //Definimos la instrucción SQL parametrizada 
+         $sql = "UPDATE `actividades` SET `nombre`=:nombre,`descripcion`=:descripcion,`aforo`=:aforo WHERE id=:id";
+         $query = $this->db->prepare($sql);
+         $query->execute([
+            'id' => $datos["id"],
+            'nombre' => $datos["nombre"],
+            'descripcion' => $datos["descripcion"],
+            'aforo' => $datos["aforo"]
+         ]);
+         //Supervisamos si la inserción se realizó correctamente... 
+         if ($query) {
+            $this->db->commit();  // commit() confirma los cambios realizados durante la transacción
+            $return["correcto"] = TRUE;
+         } // o no :(
+      } catch (PDOException $ex) {
+         $this->db->rollback(); // rollback() se revierten los cambios realizados durante la transacción
+         $return["error"] = $ex->getMessage();
+         //die();
+      }
+
+      return $return;
+   }
+
+   /**
+    * 
+    */
+   public function listaAct($id)
+   {
+      $return = [
+         "correcto" => FALSE,
+         "datos" => NULL,
+         "error" => NULL
+      ];
+
+      if ($id && is_numeric($id)) {
+         try {
+            $sql = "SELECT * FROM actividades WHERE id=:id";
+            $query = $this->db->prepare($sql);
+            $query->execute(['id' => $id]);
+            //Supervisamos que la consulta se realizó correctamente... 
+            if ($query) {
+               $return["correcto"] = TRUE;
+               $return["datos"] = $query->fetch(PDO::FETCH_ASSOC);
+            } // o no :(
+         } catch (PDOException $ex) {
+            $return["error"] = $ex->getMessage();
+            //die();
+         }
+      }
+
+      return $return;
+   }
+
+
+   /**
+    * Método que elimina la actividad cuyo id es el que se le pasa como parámetro 
+    * @param $id es un valor numérico. Es el campo clave de la tabla
+    * @return boolean
+    */
+   public function delActiv($id)
+   {
+      // La función devuelve un array con dos valores:'correcto', que indica si la
+      // operación se realizó correctamente, y 'mensaje', campo a través del cual le
+      // mandamos a la vista el mensaje indicativo del resultado de la operación
+      $return = [
+         "correcto" => FALSE,
+         "error" => NULL
+      ];
+      //Si hemos recibido el id y es un número realizamos el borrado...
+      if ($id && is_numeric($id)) {
+         try {
+            //Inicializamos la transacción
+            $this->db->beginTransaction();
+            //Definimos la instrucción SQL parametrizada 
+            $sql = "DELETE FROM actividades WHERE id=:id";
+            $query = $this->db->prepare($sql);
+            $query->execute(['id' => $id]);
+            //Supervisamos si la eliminación se realizó correctamente... 
+            if ($query) {
+               $this->db->commit();  // commit() confirma los cambios realizados durante la transacción
+               $return["correcto"] = TRUE;
+            } // o no :(
+         } catch (PDOException $ex) {
+            $this->db->rollback(); // rollback() se revierten los cambios realizados durante la transacción
+            $return["error"] = $ex->getMessage();
+         }
+      } else {
+         $return["correcto"] = FALSE;
       }
 
       return $return;
