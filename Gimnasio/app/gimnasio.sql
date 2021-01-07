@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-01-2021 a las 10:54:46
+-- Tiempo de generación: 08-01-2021 a las 00:37:26
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.10
 
@@ -41,7 +41,8 @@ CREATE TABLE `actividades` (
 INSERT INTO `actividades` (`id`, `nombre`, `descripcion`, `aforo`) VALUES
 (1, 'Ciclismo Indoor', 'El ciclismo indoor o spinning, como se le conoce comúnmente, se define como una actividad física colectiva, realizada sobre una bicicleta especialmente diseñada para tal efecto, a un ritmo determinado, en la que se efectúa un trabajo predominantemente cardiovascular', 20),
 (2, 'Pilates', 'Pilates es un método de ejercicio y movimiento físico diseñado para estirar, fortalecer y equilibrar el cuerpo. Con la práctica sistemática de ejercicios específicos junto con los patrones de respiración, Pilates ha demostrado tener un valor incalculable no sólo para las personas que quieren mantene', 15),
-(8, 'Boxeo', 'El boxeo, en un primer pensamiento, lo asociamos a un deporte de contacto, en el que dos personas combaten utilizando sólo sus puños, los cuales se cubren con unos guantes especiales. En el que su principal objetivo es golpear el mayor número de veces al contrincante por encima de su cintura y dentr', 12);
+(8, 'Boxeo', 'El boxeo, en un primer pensamiento, lo asociamos a un deporte de contacto, en el que dos personas combaten utilizando sólo sus puños, los cuales se cubren con unos guantes especiales. En el que su principal objetivo es golpear el mayor número de veces al contrincante por encima de su cintura y dentr', 12),
+(10, 'Cxworx', 'Se enfoca en trabajar principalmente la zona central del cuerpo, también llamado core. Se ejercitan los músculos del abdomen, oblicuos y espalda baja con trabajo de fuerza y tono', 20);
 
 -- --------------------------------------------------------
 
@@ -85,12 +86,20 @@ INSERT INTO `rol` (`id`, `tipo`) VALUES
 CREATE TABLE `tramo_horario` (
   `id` int(10) NOT NULL,
   `dia` varchar(10) NOT NULL,
-  `hora_inicio` time NOT NULL,
-  `hora_fin` time NOT NULL,
+  `hora_inicio` varchar(5) NOT NULL,
+  `hora_fin` varchar(5) NOT NULL,
   `actividad_id` int(10) NOT NULL,
   `fecha_alta` date NOT NULL,
   `fecha_baja` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `tramo_horario`
+--
+
+INSERT INTO `tramo_horario` (`id`, `dia`, `hora_inicio`, `hora_fin`, `actividad_id`, `fecha_alta`, `fecha_baja`) VALUES
+(1, 'Lunes', '10:00', '11:00', 2, '2021-01-06', '0000-00-00'),
+(2, 'Miercoles', '20:00', '20:45', 8, '2021-01-07', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -132,7 +141,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `nif`, `nombre`, `apellido1`, `apellido2`, `imagen`, `login`, `password`, `email`, `telefono`, `direccion`, `rol`) VALUES
-(3, '12312312E', 'adri', 'gomez', 'gomez', 'usuario.jpg', 'adri', '83b621ca1ac1f7df26124821387af790d0f22e4f', 'adrigoluna@hotmail.com', 666777888, 'Duque de Ahumada', 1),
+(3, '22312313A', 'Adrian', 'Gomez', 'Luna', 'usuario.jpg', 'adri', '83b621ca1ac1f7df26124821387af790d0f22e4f', 'adrigoluna@hotmail.com', 666777889, 'Duque de Ahumada', 1),
 (16, '12312312R', 'maria', 'maria', 'mira', 'usuaria.jpg', 'mari', '5d95cb27f49aafe1eac579adf55ae18deeb49b8c', 'maia@miya.com', 666777822, 'huelva', 1),
 (18, '44221362k', 'admin', 'admin', 'admin', 'admin.jpg', 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'admin@admin.com', 666777822, 'Duque de Ahumada', 0);
 
@@ -151,8 +160,8 @@ ALTER TABLE `actividades`
 --
 ALTER TABLE `mensajes`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `usu_origen` (`usu_origen`),
-  ADD UNIQUE KEY `usu_destino` (`usu_destino`);
+  ADD KEY `usu_origen` (`usu_origen`) USING BTREE,
+  ADD KEY `usu_destino` (`usu_destino`) USING BTREE;
 
 --
 -- Indices de la tabla `rol`
@@ -165,15 +174,15 @@ ALTER TABLE `rol`
 --
 ALTER TABLE `tramo_horario`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `actividad_id` (`actividad_id`);
+  ADD KEY `actividad_id` (`actividad_id`) USING BTREE;
 
 --
 -- Indices de la tabla `tramo_usuario`
 --
 ALTER TABLE `tramo_usuario`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `tramo_id` (`tramo_id`),
-  ADD UNIQUE KEY `usuario_id` (`usuario_id`);
+  ADD KEY `tramo_id` (`tramo_id`) USING BTREE,
+  ADD KEY `usuario_id` (`usuario_id`) USING BTREE;
 
 --
 -- Indices de la tabla `usuario`
@@ -191,7 +200,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `actividades`
 --
 ALTER TABLE `actividades`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `mensajes`
@@ -203,7 +212,7 @@ ALTER TABLE `mensajes`
 -- AUTO_INCREMENT de la tabla `tramo_horario`
 --
 ALTER TABLE `tramo_horario`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `tramo_usuario`
@@ -232,14 +241,14 @@ ALTER TABLE `mensajes`
 -- Filtros para la tabla `tramo_horario`
 --
 ALTER TABLE `tramo_horario`
-  ADD CONSTRAINT `horario_actividad` FOREIGN KEY (`actividad_id`) REFERENCES `actividades` (`id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `horario_actividad` FOREIGN KEY (`actividad_id`) REFERENCES `actividades` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `tramo_usuario`
 --
 ALTER TABLE `tramo_usuario`
   ADD CONSTRAINT `tramoUsu_horar` FOREIGN KEY (`tramo_id`) REFERENCES `tramo_horario` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `tramoUsu_usuario` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `tramoUsu_usuario` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `usuario`

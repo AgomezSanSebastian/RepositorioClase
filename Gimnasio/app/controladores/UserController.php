@@ -559,7 +559,8 @@ class UserController extends BaseController
     /**
      * 
      */
-    public function editarPerfil(){
+    public function editarPerfil()
+    {
         /**
          * Método de la clase controlador que permite actualizar los datos del usuario
          * cuyo id coincide con el que se pasa como parámetro desde la vista de listado
@@ -582,7 +583,7 @@ class UserController extends BaseController
 
         // Si se ha pulsado el botón actualizar...
         if (isset($_POST['submit'])) { //Realizamos la actualización con los datos existentes en los campos
-            
+
             $newnif = filter_var($_POST['nif'], FILTER_SANITIZE_STRING);
             $newnombre = filter_var($_POST['nombre'], FILTER_SANITIZE_STRING);
             $newape1  = filter_var($_POST['apellido1'], FILTER_SANITIZE_STRING);
@@ -631,13 +632,12 @@ class UserController extends BaseController
             $valid = $newid;
             $valnombre = $newnombre;
             $valape1 = $newape1;
-            $valape2  = $newape2;            
+            $valape2  = $newape2;
             $valnif = $newnif;
             $valdire = $newdire;
             $valemail = $newemail;
             $valtele = $newtele;
             $valpass = $newpass;
-            
         } else { //Estamos rellenando los campos con los valores recibidos del listado
             if (isset($_GET['login'])) {
                 $login = $_GET['login'];
@@ -689,7 +689,6 @@ class UserController extends BaseController
         ];
         //Mostramos la vista actuser
         $this->view->show("EditarPerfil", $parametros);
-
     }
 
     //------------------------------------------------------------------------------
@@ -984,5 +983,82 @@ class UserController extends BaseController
         }
         //Realizamos el listado de los usuarios
         $this->listarActividadesAdmin();
+    }
+
+    //------------------------------------------------------------------------------
+    //---------------------------------- HORARIO -----------------------------------
+    //------------------------------------------------------------------------------
+    /**
+     * 
+     */
+    public function listarHorarioAdmin()
+    {
+        // Almacenamos en el array 'parametros[]'los valores que vamos a mostrar en la vista
+        $parametros = [
+            "tituloventana" => "Base de Datos con PHP y PDO",
+            "datos" => NULL,
+            "mensajes" => []
+        ];
+        // Realizamos la consulta y almacenamos los resultados en la variable $resultModelo
+        $resultModelo = $this->modelo->listarHorario();
+        // Si la consulta se realizó correctamente transferimos los datos obtenidos
+        // de la consulta del modelo ($resultModelo["datos"]) a nuestro array parámetros
+        // ($parametros["datos"]), que será el que le pasaremos a la vista para visualizarlos
+        if ($resultModelo["correcto"]) :
+            $parametros["datos"] = $resultModelo["datos"];
+            //Definimos el mensaje para el alert de la vista de que todo fue correctamente
+            $this->mensajes[] = [
+                "tipo" => "success",
+                "mensaje" => "El listado se realizó correctamente"
+            ];
+        else :
+            //Definimos el mensaje para el alert de la vista de que se produjeron errores al realizar el listado
+            $this->mensajes[] = [
+                "tipo" => "danger",
+                "mensaje" => "El listado no pudo realizarse correctamente!! :( <br/>({$resultModelo["error"]})"
+            ];
+        endif;
+        //Asignamos al campo 'mensajes' del array de parámetros el valor del atributo 
+        //'mensaje', que recoge cómo finalizó la operación:
+        $parametros["mensajes"] = $this->mensajes;
+        // Incluimos la vista en la que visualizaremos los datos o un mensaje de error
+        $this->view->show("HorarioAdmin", $parametros);    
+    }
+
+    /**
+     * 
+     */
+    public function horario()
+    {
+        // Almacenamos en el array 'parametros[]'los valores que vamos a mostrar en la vista
+        $parametros = [
+            "tituloventana" => "Base de Datos con PHP y PDO",
+            "datos" => NULL,
+            "mensajes" => []
+        ];
+        // Realizamos la consulta y almacenamos los resultados en la variable $resultModelo
+        $resultModelo = $this->modelo->listarHorario();
+        // Si la consulta se realizó correctamente transferimos los datos obtenidos
+        // de la consulta del modelo ($resultModelo["datos"]) a nuestro array parámetros
+        // ($parametros["datos"]), que será el que le pasaremos a la vista para visualizarlos
+        if ($resultModelo["correcto"]) :
+            $parametros["datos"] = $resultModelo["datos"];
+            //Definimos el mensaje para el alert de la vista de que todo fue correctamente
+            $this->mensajes[] = [
+                "tipo" => "success",
+                "mensaje" => "El listado se realizó correctamente"
+            ];
+        else :
+            //Definimos el mensaje para el alert de la vista de que se produjeron errores al realizar el listado
+            $this->mensajes[] = [
+                "tipo" => "danger",
+                "mensaje" => "El listado no pudo realizarse correctamente!! :( <br/>({$resultModelo["error"]})"
+            ];
+        endif;
+        //Asignamos al campo 'mensajes' del array de parámetros el valor del atributo 
+        //'mensaje', que recoge cómo finalizó la operación:
+        $parametros["mensajes"] = $this->mensajes;
+        // Incluimos la vista en la que visualizaremos los datos o un mensaje de error        
+        $this->view->show("Horario", $parametros);
     }
 }

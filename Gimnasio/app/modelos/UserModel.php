@@ -677,4 +677,38 @@ class UserModel extends BaseModel
 
       return $return;
    }
+
+   
+   //------------------------------------------------------------------------------
+   //---------------------------------- HORARIO -----------------------------------
+   //------------------------------------------------------------------------------
+
+   /**
+    * 
+    */
+   public function listarHorario()
+   {
+      $return = [
+         "correcto" => FALSE,
+         "datos" => NULL,
+         "error" => NULL
+      ];
+      //Realizamos la consulta...
+      try {  //Definimos la instrucción SQL  
+         $sql = "SELECT `tramo_horario`.`id` AS id, `tramo_horario`.`dia` AS `dia`, `tramo_horario`.`hora_inicio` AS `inicio`, `actividades`.`nombre` AS `nombre`
+         FROM `tramo_horario` 
+            LEFT JOIN `actividades` ON `tramo_horario`.`actividad_id` = `actividades`.`id`;";
+         // Hacemos directamente la consulta al no tener parámetros
+         $resultsquery = $this->db->query($sql);
+         //Supervisamos si la inserción se realizó correctamente... 
+         if ($resultsquery) :
+            $return["correcto"] = TRUE;
+            $return["datos"] = $resultsquery->fetchAll(PDO::FETCH_ASSOC);
+         endif; // o no :(
+      } catch (PDOException $ex) {
+         $return["error"] = $ex->getMessage();
+      }
+
+      return $return;
+   }
 }

@@ -24,7 +24,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarActividades">
                     <a class="dropdown-item" href="?controller=User&accion=listarActividadesAdmin">Listar Actividades</a>
-                    <a class="dropdown-item" href="home.php?page=horario">Horario</a>
+                    <a class="dropdown-item" href="?controller=User&accion=listarHorarioAdmin">Horario</a>
                     <a class="dropdown-item" href="home.php?page=horario">Agregar Clase</a>
                 </div>
             </li>
