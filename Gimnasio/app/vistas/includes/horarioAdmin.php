@@ -23,11 +23,11 @@
         </tr>
         <?php foreach ($horas as $hora) :  ?>
 
-            <tr >
+            <tr>
                 <td><?= $hora ?> </td>
 
-                <td >
-                    <h5>
+                <td>
+                    <h5 class="alert-heading text-danger">
                         <strong>
                             <?php
                             foreach ($datos as $dato) :
@@ -40,11 +40,11 @@
                             ?>
                         </strong>
                     </h5>
-                    <a href="?controller=user&accion=editarActiv&id=<?= $dato['id'] ?>">Agregar</a>
-                    <a href="?controller=user&accion=delActividad&id=<?= $dato['id'] ?>">Eliminar</a>
+                    <a href="?controller=user&accion=agregaActiv&dia=<?= $dias[0] ?>&hora=<?= $hora ?>">Agregar</a>
+                    <a href="?controller=user&accion=delHorarioActividad&id=<?= $dato['id'] ?>">Eliminar</a>
                 </td>
                 <td>
-                    <h5>
+                    <h5 class="alert-heading text-danger">
                         <strong>
                             <?php
                             foreach ($datos as $dato) :
@@ -57,11 +57,11 @@
                             ?>
                         </strong>
                     </h5>
-                    <a href="?controller=user&accion=editarActiv&id=<?= $dato['id'] ?>">Agregar</a>
-                    <a href="?controller=user&accion=delActividad&id=<?= $dato['id'] ?>">Eliminar</a>
+                    <a href="?controller=user&accion=agregaActiv&dia=<?= $dias[1] ?>&hora=<?= $hora ?>">Agregar</a>
+                    <a href="?controller=user&accion=delHorarioActividad&id=<?= $dato['id'] ?>">Eliminar</a>
                 </td>
                 <td>
-                    <h5>
+                    <h5 class="alert-heading text-danger">
                         <strong>
                             <?php
                             foreach ($datos as $dato) :
@@ -74,11 +74,11 @@
                             ?>
                         </strong>
                     </h5>
-                    <a href="?controller=user&accion=editarActiv&id=<?= $dato['id'] ?>">Agregar</a>
-                    <a href="?controller=user&accion=delActividad&id=<?= $dato['id'] ?>">Eliminar</a>
+                    <a href="?controller=user&accion=agregaActiv&dia=<?= $dias[2] ?>&hora=<?= $hora ?>">Agregar</a>
+                    <a href="?controller=user&accion=delHorarioActividad&id=<?= $dato['id'] ?>">Eliminar</a>
                 </td>
                 <td>
-                    <h5>
+                    <h5 class="alert-heading text-danger">
                         <strong>
                             <?php
                             foreach ($datos as $dato) :
@@ -91,11 +91,11 @@
                             ?>
                         </strong>
                     </h5>
-                    <a href="?controller=user&accion=editarActiv&id=<?= $dato['id'] ?>">Agregar</a>
-                    <a href="?controller=user&accion=delActividad&id=<?= $dato['id'] ?>">Eliminar</a>
+                    <a href="?controller=user&accion=agregaActiv&dia=<?= $dias[3] ?>&hora=<?= $hora ?>">Agregar</a>
+                    <a href="?controller=user&accion=delHorarioActividad&id=<?= $dato['id'] ?>">Eliminar</a>
                 </td>
                 <td>
-                    <h5>
+                    <h5 class="alert-heading text-danger">
                         <strong>
                             <?php
                             foreach ($datos as $dato) :
@@ -108,8 +108,8 @@
                             ?>
                         </strong>
                     </h5>
-                    <a href="?controller=user&accion=editarActiv&id=<?= $dato['id'] ?>">Agregar</a>
-                    <a href="?controller=user&accion=delActividad&id=<?= $dato['id'] ?>">Eliminar</a>
+                    <a href="?controller=user&accion=agregaActiv&id=<?= $dato['id'] ?>&dia=<?= $dias[4] ?>&hora=<?= $hora ?>">Agregar</a>
+                    <a href="?controller=user&accion=delHorarioActividad&id=<?= $dato['id'] ?>">Eliminar</a>
                 </td>
 
             </tr>

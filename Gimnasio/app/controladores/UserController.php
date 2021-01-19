@@ -48,7 +48,8 @@ class UserController extends BaseController
     /**
      * 
      */
-    public function listarUser()
+    
+     public function listarUser()
     {
         // Almacenamos en el array 'parametros[]'los valores que vamos a mostrar en la vista
         $parametros = [
@@ -82,6 +83,9 @@ class UserController extends BaseController
         $this->view->show("ListarUsuarios", $parametros);
     }
 
+    /**
+     * 
+     */
     public function listarNoActivos()
     {
         // Almacenamos en el array 'parametros[]'los valores que vamos a mostrar en la vista
@@ -162,7 +166,7 @@ class UserController extends BaseController
 
 
     /**
-     * 
+     * DEBERÍA COMPRABAR POR SI SE BORRA
      */
     public function ediUsuario()
     {
@@ -989,7 +993,7 @@ class UserController extends BaseController
     //---------------------------------- HORARIO -----------------------------------
     //------------------------------------------------------------------------------
     /**
-     * 
+     * Muestra el horario del gimnasio por parte del Adminitrador
      */
     public function listarHorarioAdmin()
     {
@@ -1022,11 +1026,11 @@ class UserController extends BaseController
         //'mensaje', que recoge cómo finalizó la operación:
         $parametros["mensajes"] = $this->mensajes;
         // Incluimos la vista en la que visualizaremos los datos o un mensaje de error
-        $this->view->show("HorarioAdmin", $parametros);    
+        $this->view->show("HorarioAdmin", $parametros);
     }
 
     /**
-     * 
+     * Muestra el horario del gimnasio por parte de los usuarios
      */
     public function horario()
     {
@@ -1060,5 +1064,152 @@ class UserController extends BaseController
         $parametros["mensajes"] = $this->mensajes;
         // Incluimos la vista en la que visualizaremos los datos o un mensaje de error        
         $this->view->show("Horario", $parametros);
+    }
+
+    /**
+     * Función que agrega una actividad al horario por parte del administrador.
+     * Carga la vista para agregar esa actividad al horario
+     * 
+     */
+    public function agregaActiv()
+    {
+        // Almacenamos en el array 'parametros[]'los valores que vamos a mostrar en la vista
+        $parametros = [
+            "tituloventana" => "Base de Datos con PHP y PDO",
+            "datos" => NULL,
+            "mensajes" => [],
+            "hora" => NULL,
+            "dia" => NULL
+        ];
+        $dia = $_GET['dia'];
+        $hora = $_GET['hora'];
+        // Realizamos la consulta y almacenamos los resultados en la variable $resultModelo
+        $resultModelo = $this->modelo->listarActiv();
+        // Si la consulta se realizó correctamente transferimos los datos obtenidos
+        // de la consulta del modelo ($resultModelo["datos"]) a nuestro array parámetros
+        // ($parametros["datos"]), que será el que le pasaremos a la vista para visualizarlos
+        if ($resultModelo["correcto"]) :
+            $parametros["datos"] = $resultModelo["datos"];
+            $parametros["dia"] = $dia;
+            $parametros["hora"] = $hora;
+            //Definimos el mensaje para el alert de la vista de que todo fue correctamente
+            $this->mensajes[] = [
+                "tipo" => "success",
+                "mensaje" => "El listado se realizó correctamente"
+            ];
+        else :
+            //Definimos el mensaje para el alert de la vista de que se produjeron errores al realizar el listado
+            $this->mensajes[] = [
+                "tipo" => "danger",
+                "mensaje" => "El listado no pudo realizarse correctamente!! :( <br/>({$resultModelo["error"]})"
+            ];
+        endif;
+        //Asignamos al campo 'mensajes' del array de parámetros el valor del atributo 
+        //'mensaje', que recoge cómo finalizó la operación:
+        $parametros["mensajes"] = $this->mensajes;
+        // Incluimos la vista en la que visualizaremos los datos o un mensaje de error
+        $this->view->show("ActivHorario", $parametros);
+    }
+
+
+    /**
+     * Vista cargada para agregar una actividad al horario y vuelve a cargar el horario
+     */
+    public function guardarActivHorario()
+    {
+        // Array asociativo que almacenará los mensajes de error que se generen por cada campo
+        $errores = array();
+        $actividad_id = NULL;
+        $dia = NULL;
+        $hora_inicio = NULL;
+        $fecha_alta = NULL;
+        // Almacenamos en el array 'parametros[]'los valores que vamos a mostrar en la vista
+
+        // Si se ha pulsado el botón guardar...
+        if (isset($_POST) && !empty($_POST) && isset($_POST['submit'])) { // y hemos recibido las variables del formulario y éstas no están vacías...
+            $actividad_id = $_POST['nombre'];
+            $dia = $_POST["dia"];
+            $hora_inicio = $_POST['hora'];
+            $fecha_alta = $_POST['fecha_alta'];
+
+            print_r($_POST);
+
+            // Si no se han producido errores realizamos el registro del usuario
+            if (count($errores) == 0) {
+                $resultModelo = $this->modelo->agregaActivHorario([
+                    'dia' => $dia,
+                    'hora_inicio' => $hora_inicio,
+                    'actividad_id' => $actividad_id,
+                    'fecha_alta' => $fecha_alta
+                ]);
+                $this->mensajes[] = [
+                    "tipo" => "success",
+                    "mensaje" => "El listado se realizó correctamente"
+                ];
+            } else {
+                $this->mensajes[] = [
+                    "tipo" => "danger",
+                    "mensaje" => "Datos de registro de usuario erróneos!! :("
+                ];
+            }
+        }
+
+        $this->listarHorarioAdmin();
+    }
+
+    /**
+     * Funcion que borra del horario una actividad y recarga el horario.
+     */
+    public function delHorarioActividad() 
+    {
+        // verificamos que hemos recibido los parámetros desde la vista de listado 
+        if (isset($_GET['id']) && (is_numeric($_GET['id']))) {
+            $id = $_GET["id"];
+            //Realizamos la operación de suprimir el usuario con el id=$id
+            $resultModelo = $this->modelo->delHorarioActiv($id);
+            //Analizamos el valor devuelto por el modelo para definir el mensaje a 
+            //mostrar en la vista listado
+            if ($resultModelo["correcto"]) :
+                $this->mensajes[] = [
+                    "tipo" => "success",
+                    "mensaje" => "Se eliminó correctamente la actividad $id"
+                ];
+            else :
+                $this->mensajes[] = [
+                    "tipo" => "danger",
+                    "mensaje" => "La eliminación de la actividad no se realizó correctamente!! :( <br/>({$resultModelo["error"]})"
+                ];
+            endif;
+        } else { //Si no recibimos el valor del parámetro $id generamos el mensaje indicativo:
+            $this->mensajes[] = [
+                "tipo" => "danger",
+                "mensaje" => "No se pudo acceder al id de la actividad a eliminar!! :("
+            ];
+        }
+        //Realizamos el listado de los usuarios
+        $this->listarHorarioAdmin();
+    }
+
+
+    /**
+     * 
+     */
+    public function inscribirseActiv()
+    {
+        // Almacenamos en el array 'parametros[]'los valores que vamos a mostrar en la vista
+        $parametros = [
+            "datos" => [],
+            "mensajes" => []
+        ];
+        //Cogemos el id del usuario a cambiar y el nuevo rol
+        $activ = $_GET['activ'];
+        $user = $_GET['user'];
+
+        // Realizamos la consulta y almacenamos los resultados en la variable $resultModelo
+        $resultModelo = $this->modelo->listarHorario();
+        //Llamamos al modelo
+       // $this->modelo->cambiarRolUser($datos);
+        //Recargamos la página
+        $this->listarUser();
     }
 }

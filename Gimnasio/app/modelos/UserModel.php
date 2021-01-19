@@ -511,7 +511,7 @@ class UserModel extends BaseModel
    //------------------------------------------------------------------------------
 
    /**
-    * 
+    * Funcion que devuelve un array con todas las actividades que tenemos
     */
    public function listarActiv()
    {
@@ -538,7 +538,7 @@ class UserModel extends BaseModel
    }
 
    /**
-    * 
+    * Función que agrega a la BD una actividad
     */
    public function agregarActiv($datos)
    {
@@ -573,7 +573,7 @@ class UserModel extends BaseModel
    }
 
    /**
-    * 
+    * Función que modifica una actividad de la BD
     */
    public function editarActividad($datos)
    {
@@ -609,7 +609,8 @@ class UserModel extends BaseModel
    }
 
    /**
-    * 
+    * Función que devuelve una actividad que coincida con el parámetro que se le haya enviado
+    
     */
    public function listaAct($id)
    {
@@ -678,13 +679,13 @@ class UserModel extends BaseModel
       return $return;
    }
 
-   
+
    //------------------------------------------------------------------------------
    //---------------------------------- HORARIO -----------------------------------
    //------------------------------------------------------------------------------
 
    /**
-    * 
+    * Función que devuelve un array con todas las activides que tenemos en el horario
     */
    public function listarHorario()
    {
@@ -707,6 +708,80 @@ class UserModel extends BaseModel
          endif; // o no :(
       } catch (PDOException $ex) {
          $return["error"] = $ex->getMessage();
+      }
+
+      return $return;
+   }
+
+   /**
+    * Funcion que agrega una actividad al horario
+    */
+   public function agregaActivHorario($datos)
+   {
+      $return = [
+         "correcto" => FALSE,
+         "error" => NULL
+      ];
+
+      try {
+         //Inicializamos la transacción
+         $this->db->beginTransaction();
+         //Definimos la instrucción SQL parametrizada 
+         $sql = "INSERT INTO `tramo_horario`( `dia`, `hora_inicio`, `actividad_id`, `fecha_alta`)  
+                VALUES (:dia,:hora_inicio,:actividad_id,:fecha_alta)";
+         // Preparamos la consulta...
+         $query = $this->db->prepare($sql);
+         // y la ejecutamos indicando los valores que tendría cada parámetro
+         $query->execute([
+            'dia' => $datos["dia"],
+            'hora_inicio' => $datos["hora_inicio"],
+            'actividad_id' => $datos["actividad_id"],
+            'fecha_alta' => $datos["fecha_alta"]
+         ]); //Supervisamos si la inserción se realizó correctamente... 
+         if ($query) {
+            $this->db->commit(); // commit() confirma los cambios realizados durante la transacción
+            $return["correcto"] = TRUE;
+         } // o no :(
+      } catch (PDOException $ex) {
+         $this->db->rollback(); // rollback() se revierten los cambios realizados durante la transacción
+         $return["error"] = $ex->getMessage();
+         //die();
+      }
+   }
+
+
+   /**
+    * Función que borra del horario una actividad
+    */
+   public function delHorarioActiv($id)
+   {
+      // La función devuelve un array con dos valores:'correcto', que indica si la
+      // operación se realizó correctamente, y 'mensaje', campo a través del cual le
+      // mandamos a la vista el mensaje indicativo del resultado de la operación
+      $return = [
+         "correcto" => FALSE,
+         "error" => NULL
+      ];
+      //Si hemos recibido el id y es un número realizamos el borrado...
+      if ($id && is_numeric($id)) {
+         try {
+            //Inicializamos la transacción
+            $this->db->beginTransaction();
+            //Definimos la instrucción SQL parametrizada 
+            $sql = "DELETE FROM tramo_horario WHERE id=:id";
+            $query = $this->db->prepare($sql);
+            $query->execute(['id' => $id]);
+            //Supervisamos si la eliminación se realizó correctamente... 
+            if ($query) {
+               $this->db->commit();  // commit() confirma los cambios realizados durante la transacción
+               $return["correcto"] = TRUE;
+            } // o no :(
+         } catch (PDOException $ex) {
+            $this->db->rollback(); // rollback() se revierten los cambios realizados durante la transacción
+            $return["error"] = $ex->getMessage();
+         }
+      } else {
+         $return["correcto"] = FALSE;
       }
 
       return $return;
