@@ -101,7 +101,7 @@
                             foreach ($datos as $dato) :
                             ?>
                                 <?php if ($dias[4] == $dato["dia"] && $hora == $dato["inicio"]) {
-                                    echo $dato["nombre"];
+                                    echo $dato["nombre"];                                    
                                 } ?>
                             <?php
                             endforeach;

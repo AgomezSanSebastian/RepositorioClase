@@ -25,12 +25,12 @@
                 <div class="dropdown-menu" aria-labelledby="navbarActividades">
                     <a class="dropdown-item" href="?controller=User&accion=listarActividadesAdmin">Listar Actividades</a>
                     <a class="dropdown-item" href="?controller=User&accion=listarHorarioAdmin">Horario</a>
-                    <a class="dropdown-item" href="home.php?page=horario">Agregar Clase</a>
+                    <a class="dropdown-item" href="?controller=User&accion=MostrarClasesAdmin">Mostrar las clases</a>
                 </div>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="home.php?page=mensaje">Mensajes</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link" href="?controller=User&accion=cargarMensaje">Mensajes</a>
             </li>
 
             <li class="nav-item">

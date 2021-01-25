@@ -48,8 +48,8 @@ class UserController extends BaseController
     /**
      * 
      */
-    
-     public function listarUser()
+
+    public function listarUser()
     {
         // Almacenamos en el array 'parametros[]'los valores que vamos a mostrar en la vista
         $parametros = [
@@ -832,24 +832,13 @@ class UserController extends BaseController
                     'descripcion' => $descripcion,
                     'aforo' => $aforo
                 ]);
-                /*if ($resultModelo["correcto"]) :
-                    $this->mensajes[] = [
-                        "tipo" => "success",
-                        "mensaje" => "El usuarios se actualizó correctamente!! :)"
-                    ];
-                else :
-                    $this->mensajes[] = [
-                        "tipo" => "danger",
-                        "mensaje" => "El usuario no pudo actualizarse!! :( <br />({$resultModelo["error"]})"
-                    ];
-                endif;*/
-                //$this->view->show("ListarActividadesAdmin", $parametros);
+
             } else {
                 $this->mensajes[] = [
                     "tipo" => "danger",
                     "mensaje" => "Datos de registro de usuario erróneos!! :("
                 ];
-                //$parametros = ["mensajes" => $this->mensajes];
+                
             }
         }
 
@@ -1132,8 +1121,6 @@ class UserController extends BaseController
             $hora_inicio = $_POST['hora'];
             $fecha_alta = $_POST['fecha_alta'];
 
-            print_r($_POST);
-
             // Si no se han producido errores realizamos el registro del usuario
             if (count($errores) == 0) {
                 $resultModelo = $this->modelo->agregaActivHorario([
@@ -1160,7 +1147,7 @@ class UserController extends BaseController
     /**
      * Funcion que borra del horario una actividad y recarga el horario.
      */
-    public function delHorarioActividad() 
+    public function delHorarioActividad()
     {
         // verificamos que hemos recibido los parámetros desde la vista de listado 
         if (isset($_GET['id']) && (is_numeric($_GET['id']))) {
@@ -1190,6 +1177,89 @@ class UserController extends BaseController
         $this->listarHorarioAdmin();
     }
 
+    /**
+     * Carga la vista del administrador de todas las clases con los socios apuntados
+     */
+    public function MostrarClasesAdmin()
+    {
+        // Almacenamos en el array 'parametros[]'los valores que vamos a mostrar en la vista
+        $parametros = [
+            "tituloventana" => "Base de Datos con PHP y PDO",
+            "datos" => NULL,
+            "cargas" => NULL,
+            "mensajes" => []
+        ];
+
+        // Realizamos la consulta y almacenamos los resultados en la variable $resultModelo
+        $resultModelo = $this->modelo->listarHorario();
+        $resultModelo2 = $this->modelo->listarClasesPrimera();
+
+        if ($resultModelo["correcto"]) :
+            $parametros["datos"] = $resultModelo["datos"];
+            $parametros["cargas"] = $resultModelo2["datos"];
+            //Definimos el mensaje para el alert de la vista de que todo fue correctamente
+            $this->mensajes[] = [
+                "tipo" => "success",
+                "mensaje" => "El listado se realizó correctamente"
+            ];
+        else :
+            //Definimos el mensaje para el alert de la vista de que se produjeron errores al realizar el listado
+            $this->mensajes[] = [
+                "tipo" => "danger",
+                "mensaje" => "El listado no pudo realizarse correctamente!! :( <br/>({$resultModelo["error"]})"
+            ];
+        endif;
+        //Asignamos al campo 'mensajes' del array de parámetros el valor del atributo 
+        //'mensaje', que recoge cómo finalizó la operación:
+        $parametros["mensajes"] = $this->mensajes;
+
+        $this->view->show("MostrarClasesAdmin", $parametros);
+    }
+
+    /**
+     * Carga la tabla de las clases de los socios apuntados
+     */
+    public function CargarClasesAdmin()
+    {
+        // Almacenamos en el array 'parametros[]'los valores que vamos a mostrar en la vista
+        $parametros = [
+            "tituloventana" => "Base de Datos con PHP y PDO",
+            "datos" => NULL,
+            "cargas" => NULL,
+            "mensajes" => [],
+            "id" => NULL
+        ];
+
+        $id = $_POST['nombre'];
+
+        // Realizamos la consulta y almacenamos los resultados en la variable $resultModelo
+        $resultModelo2 = $this->modelo->listarClasesUsuarios($id);
+        $resultModelo = $this->modelo->listarHorario();
+        // Si la consulta se realizó correctamente transferimos los datos obtenidos
+        // de la consulta del modelo ($resultModelo["datos"]) a nuestro array parámetros
+        // ($parametros["datos"]), que será el que le pasaremos a la vista para visualizarlos
+        if ($resultModelo["correcto"]) :
+            $parametros["datos"] = $resultModelo["datos"];
+            $parametros["cargas"] = $resultModelo2["datos"];
+            $parametros["id"] = $id;
+            //Definimos el mensaje para el alert de la vista de que todo fue correctamente
+            $this->mensajes[] = [
+                "tipo" => "success",
+                "mensaje" => "El listado se realizó correctamente"
+            ];
+        else :
+            //Definimos el mensaje para el alert de la vista de que se produjeron errores al realizar el listado
+            $this->mensajes[] = [
+                "tipo" => "danger",
+                "mensaje" => "El listado no pudo realizarse correctamente!! :( <br/>({$resultModelo["error"]})"
+            ];
+        endif;
+        //Asignamos al campo 'mensajes' del array de parámetros el valor del atributo 
+        //'mensaje', que recoge cómo finalizó la operación:
+        $parametros["mensajes"] = $this->mensajes;
+        // Incluimos la vista en la que visualizaremos los datos o un mensaje de error
+        $this->view->show("MostrarClasesAdmin", $parametros);
+    }
 
     /**
      * 
@@ -1208,8 +1278,95 @@ class UserController extends BaseController
         // Realizamos la consulta y almacenamos los resultados en la variable $resultModelo
         $resultModelo = $this->modelo->listarHorario();
         //Llamamos al modelo
-       // $this->modelo->cambiarRolUser($datos);
+        // $this->modelo->cambiarRolUser($datos);
         //Recargamos la página
         $this->listarUser();
+    }
+
+
+    //------------------------------------------------------------------------------
+    //---------------------------------- Mensaje -----------------------------------
+    //------------------------------------------------------------------------------
+
+    /**
+     * Carga los mensajes para poder escribir 1 nuevo y leer los mensajes que tengas
+     */
+    public function cargarMensaje()
+    {
+        // Almacenamos en el array 'parametros[]'los valores que vamos a mostrar en la vista
+        $parametros = [
+            "tituloventana" => "Base de Datos con PHP y PDO",
+            "datos" => NULL,
+            "mensajes" => [],
+        ];
+
+        // Realizamos la consulta y almacenamos los resultados en la variable $resultModelo
+        $resultModelo = $this->modelo->listado();
+
+        // Si la consulta se realizó correctamente transferimos los datos obtenidos
+        // de la consulta del modelo ($resultModelo["datos"]) a nuestro array parámetros
+        // ($parametros["datos"]), que será el que le pasaremos a la vista para visualizarlos
+        if ($resultModelo["correcto"]) :
+            $parametros["datos"] = $resultModelo["datos"];
+            //Definimos el mensaje para el alert de la vista de que todo fue correctamente
+            $this->mensajes[] = [
+                "tipo" => "success",
+                "mensaje" => "El listado se realizó correctamente"
+            ];
+        else :
+            //Definimos el mensaje para el alert de la vista de que se produjeron errores al realizar el listado
+            $this->mensajes[] = [
+                "tipo" => "danger",
+                "mensaje" => "El listado no pudo realizarse correctamente!! :( <br/>({$resultModelo["error"]})"
+            ];
+        endif;
+        //Asignamos al campo 'mensajes' del array de parámetros el valor del atributo 
+        //'mensaje', que recoge cómo finalizó la operación:
+        $parametros["mensajes"] = $this->mensajes;
+        // Incluimos la vista en la que visualizaremos los datos o un mensaje de error
+        $this->view->show("MensajeAdmin", $parametros);
+    }
+
+
+    /**
+     * Agrega un mensaje a la BD
+     */
+    public function AgregarMensajeAdmin()
+    {
+        // Array asociativo que almacenará los mensajes de error que se generen por cada campo
+        $errores = array();
+        $usu_destino = NULL;
+        $usu_origen = NULL;
+        $mensaje = NULL;
+        
+        // Almacenamos en el array 'parametros[]'los valores que vamos a mostrar en la vista
+
+        // Si se ha pulsado el botón guardar...
+        if (isset($_POST) && !empty($_POST) && isset($_POST['submit'])) { // y hemos recibido las variables del formulario y éstas no están vacías...
+            $usu_destino = $_POST['usu_destino'];
+            $usu_origen = $_POST['usu_origen'];
+            $mensaje = $_POST['mensaje'];
+
+            // Si no se han producido errores realizamos el registro del usuario
+            if (count($errores) == 0) {
+                $resultModelo = $this->modelo->agregaMensaje([
+                    'usu_destino' => $usu_destino,
+                    'usu_origen' => $usu_origen,
+                    'mensaje' => $mensaje                    
+                ]);
+                $this->mensajes[] = [
+                    "tipo" => "success",
+                    "mensaje" => "El listado se realizó correctamente"
+                ];
+            } else {
+                $this->mensajes[] = [
+                    "tipo" => "danger",
+                    "mensaje" => "Datos de registro de usuario erróneos!! :("
+                ];
+            }
+        }
+
+        $this->cargarMensaje();
+
     }
 }

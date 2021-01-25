@@ -786,4 +786,117 @@ class UserModel extends BaseModel
 
       return $return;
    }
+
+   /**
+    * Lista la primera clase de la lista de ID 
+    */
+   public function listarClasesPrimera()
+   {
+      $return = [
+         "correcto" => FALSE,
+         "datos" => NULL,
+         "error" => NULL
+      ];
+      //Realizamos la consulta...
+      try {  //Definimos la instrucción SQL           
+         $sql = "SELECT `usuario`.`login`, `usuario`.`nombre`, `usuario`.`apellido1`, `usuario`.`apellido2`, `usuario`.`telefono`
+         FROM `usuario`
+         WHERE `usuario`.`id` in (SELECT `tramo_usuario`.`usuario_id`
+                  FROM `tramo_usuario`
+                  WHERE `tramo_usuario`.`tramo_id` =(SELECT id FROM `tramo_horario` ORDER by ID ASC LIMIT 1));";
+         // Hacemos directamente la consulta al no tener parámetros
+         $resultsquery = $this->db->query($sql);
+         //Supervisamos si la inserción se realizó correctamente... 
+         if ($resultsquery) :
+            $return["correcto"] = TRUE;
+            $return["datos"] = $resultsquery->fetchAll(PDO::FETCH_ASSOC);
+         endif; // o no :(
+      } catch (PDOException $ex) {
+         $return["error"] = $ex->getMessage();
+      }
+
+      return $return;
+   }
+
+
+
+   /**
+    * Lista los usuarios con el id pasado por parametros del tramo_Horario
+    */
+   public function listarClasesUsuarios($id)
+   {
+      $return = [
+         "correcto" => false,
+         "datos" => null,
+         "error" => null
+      ];
+
+      if ($id && is_numeric($id)) {
+         try {
+            $sql = "SELECT `usuario`.`login`, `usuario`.`nombre`, `usuario`.`apellido1`, `usuario`.`apellido2`, `usuario`.`telefono` 
+                  FROM `usuario` 
+                  WHERE `usuario`.`id` IN 
+                     (SELECT `tramo_usuario`.`usuario_id` FROM `tramo_usuario` WHERE `tramo_usuario`.`tramo_id` = :id)";
+
+            $query = $this->db->prepare($sql);
+            $query->execute(['id' => $id]);
+            //$query->execute();
+
+            //Supervisamos que la consulta se realizó correctamente...
+            if ($query) {
+               $return["correcto"] = true;
+               $return["datos"] = $query->fetchAll(PDO::FETCH_ASSOC);
+            } // o no :(
+         } catch (PDOException $ex) {
+            $return["error"] = $ex->getMessage();
+            //die();
+         }
+         //}
+
+         return $return;
+      }
+   }
+
+   //------------------------------------------------------------------------------
+   //---------------------------------- MENSAJE -----------------------------------
+   //------------------------------------------------------------------------------
+
+   /**
+    * Agregamos un nuevo mensaje a la bd
+    */
+   public function agregaMensaje($datos)
+   {
+      $return = [
+         "correcto" => FALSE,
+         "error" => NULL
+      ];
+
+      try {
+         //Inicializamos la transacción
+         $this->db->beginTransaction();
+         //Definimos la instrucción SQL parametrizada 
+         $sql = "INSERT INTO `mensajes`(`usu_origen`, `usu_destino`, `mensaje`) 
+               VALUES (:usu_origen,:usu_destino,:mensaje)";
+         // Preparamos la consulta...
+         $query = $this->db->prepare($sql);
+         // y la ejecutamos indicando los valores que tendría cada parámetro
+         $query->execute([
+            'usu_origen' => $datos["usu_origen"],
+            'usu_destino' => $datos["usu_destino"],
+            'mensaje' => $datos["mensaje"]            
+         ]); //Supervisamos si la inserción se realizó correctamente... 
+         if ($query) {
+            $this->db->commit(); // commit() confirma los cambios realizados durante la transacción
+            $return["correcto"] = TRUE;
+         } // o no :(
+      } catch (PDOException $ex) {
+         $this->db->rollback(); // rollback() se revierten los cambios realizados durante la transacción
+         $return["error"] = $ex->getMessage();
+         //die();
+      }
+   }
+
+   public function listarMensajes($login)
+   {
+   }
 }
