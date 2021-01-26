@@ -883,7 +883,7 @@ class UserModel extends BaseModel
          $query->execute([
             'usu_origen' => $datos["usu_origen"],
             'usu_destino' => $datos["usu_destino"],
-            'mensaje' => $datos["mensaje"]            
+            'mensaje' => $datos["mensaje"]
          ]); //Supervisamos si la inserción se realizó correctamente... 
          if ($query) {
             $this->db->commit(); // commit() confirma los cambios realizados durante la transacción
@@ -896,7 +896,35 @@ class UserModel extends BaseModel
       }
    }
 
-   public function listarMensajes($login)
+   /**
+    * Muestra todos los usuarios y  mensajes recibidos 
+    */
+   public function listarMensajes($usu_destino)
    {
+      $return = [
+         "correcto" => FALSE,
+         "datos" => NULL,
+         "error" => NULL
+      ];
+
+      if ($usu_destino && is_numeric($usu_destino)) {
+         try {
+            $sql = "SELECT usuario.login,mensajes.id,mensajes.usu_origen,mensajes.usu_destino,mensajes.mensaje
+            FROM mensajes JOIN usuario ON mensajes.usu_origen = usuario.id
+            WHERE mensajes.usu_destino = :usu_destino";
+            $query = $this->db->prepare($sql);
+            $query->execute(['usu_destino' => $usu_destino]);
+            //Supervisamos que la consulta se realizó correctamente... 
+            if ($query) {
+               $return["correcto"] = TRUE;
+               $return["datos"] = $query->fetchAll(PDO::FETCH_ASSOC);
+            } // o no :(
+         } catch (PDOException $ex) {
+            $return["error"] = $ex->getMessage();
+            //die();
+         }
+      }
+
+      return $return;
    }
 }

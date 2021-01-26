@@ -3,16 +3,21 @@
 <div class="container mb-5">
     <div class="row mt-5">
 
-        <div class="col-lg-3"></div>
-        <!--Mostramos los mensajes que se hayan generado al realizar el listado-->
-        <?php if (isset($mensajes)) {
-            foreach ($mensajes as $mensaje) : ?>
-                <div class="alert alert-<?= $mensaje["tipo"] ?> mt-5"><?= $mensaje["mensaje"] ?></div>
-        <?php endforeach;
-        } ?>
+        <div class="col-lg-12 text-center pt-3">
+            <h2>Editar el perfil:</h2>
+        </div>
+        <div class="col-lg-12">
+            <!--Mostramos los mensajes que se hayan generado al realizar el listado-->
+            <?php if (isset($mensajes)) {
+                foreach ($mensajes as $mensaje) : ?>
+                    <div class="alert alert-<?= $mensaje["tipo"] ?> mt-5"><?= $mensaje["mensaje"] ?></div>
+            <?php endforeach;
+            } ?>
+        </div>
 
+        <div class="col-lg-3"></div>
         <div class="col-lg-6 form_login mt-5">
-            <form class="form-signin" method="POST" action="?controller=User&accion=editarPerfil&login=<?= $login ?>" >
+            <form class="form-signin" method="POST" action="?controller=User&accion=editarPerfil&login=<?= $login ?>">
 
 
 
@@ -25,13 +30,13 @@
                 <div class="form-group row">
                     <label for="apellido1" class="col-lg-4 col-form-label text-center">1º Apellido: </label>
                     <div class="col-lg-7 text-left">
-                        <input type="text" class="form-control" id="apellido1" name="apellido1" value="<?= $datos["apellido1"] ?>"/>
+                        <input type="text" class="form-control" id="apellido1" name="apellido1" value="<?= $datos["apellido1"] ?>" />
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="apellido2" class="col-lg-4 col-form-label text-center">2º Apellido: </label>
                     <div class="col-lg-7 text-left">
-                        <input type="text" class="form-control" id="apellido2" name="apellido2" value="<?= $datos["apellido2"] ?>"/>                        
+                        <input type="text" class="form-control" id="apellido2" name="apellido2" value="<?= $datos["apellido2"] ?>" />
                     </div>
                 </div>
                 <div class="form-group row">
@@ -57,7 +62,7 @@
                 <div class="form-group row">
                     <label for="telefono" class="col-lg-4 col-form-label text-center">Teléfono: </label>
                     <div class="col-lg-7 text-left">
-                        <input type="text" class="form-control" id="telefono" name="telefono" value="<?= $datos["telefono"] ?>"/>        
+                        <input type="text" class="form-control" id="telefono" name="telefono" value="<?= $datos["telefono"] ?>" />
                     </div>
                 </div>
                 <div class="form-group row">
@@ -84,10 +89,10 @@
                 </div>
 
 
-                
+
             </form>
 
-        </pre>
+            </pre>
         </div>
     </div>
 </div>

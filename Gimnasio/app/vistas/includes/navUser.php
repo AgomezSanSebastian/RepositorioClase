@@ -31,7 +31,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="home.php?page=mensaje">Mensajes</a>
+                    <a class="nav-link" href="?controller=User&accion=cargarMensajeUser">Mensajes</a>
                 </li>
 
                 <li class="nav-item">
