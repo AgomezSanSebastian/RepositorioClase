@@ -857,6 +857,107 @@ class UserModel extends BaseModel
       }
    }
 
+   public function estaApuntadoClase($tramo_id, $usuario_id)
+   {
+      $return = [
+         "correcto" => FALSE,
+         "error" => NULL
+      ];
+
+      try {
+         $sql = "SELECT * FROM tramo_usuario WHERE tramo_id =:tramo_id and usuario_id =:usuario_id";
+         $query = $this->db->prepare($sql);
+         $query->execute(['tramo_id' => $tramo_id, 'usuario_id' => $usuario_id]);
+
+         if ($query) {
+            $usuarioDatos = $query->fetchAll();
+
+            if (count($usuarioDatos) == 0) {
+               $return["correcto"] = TRUE;
+               //$return["datos"] = $usuarioDatos;
+            }
+         }
+      } catch (\Throwable $ex) {
+         $return["error"] = $ex->getMessage();
+      }
+
+      return $return;
+   }
+
+
+   /**
+    * Función donde un usuario puede apuntarte a una clase específica
+    */
+   public function apuntarUsuarioClase($datos)
+   {
+      $return = [
+         "correcto" => FALSE,
+         "error" => NULL
+      ];
+
+      try {
+         //Inicializamos la transacción
+         $this->db->beginTransaction();
+         //Definimos la instrucción SQL parametrizada 
+         $sql = "INSERT INTO `tramo_usuario`(`tramo_id`, `usuario_id`, `fecha_actividad`, `hora_activ`, `fecha_reserva`)   
+                VALUES (:tramo_id,:usuario_id,:fecha_actividad,:hora_activ,:fecha_alta)";
+         // Preparamos la consulta...
+         $query = $this->db->prepare($sql);
+         // y la ejecutamos indicando los valores que tendría cada parámetro
+         $query->execute([
+            'tramo_id' => $datos["activ"],
+            'usuario_id' => $datos["user"],
+            'fecha_actividad' => $datos["dia"],
+            'hora_activ' => $datos["inicio"],
+            'fecha_alta' => $datos["fecha_alta"]
+         ]); //Supervisamos si la inserción se realizó correctamente... 
+         if ($query) {
+            $this->db->commit(); // commit() confirma los cambios realizados durante la transacción
+            $return["correcto"] = TRUE;
+         } // o no :(
+      } catch (PDOException $ex) {
+         $this->db->rollback(); // rollback() se revierten los cambios realizados durante la transacción
+         $return["error"] = $ex->getMessage();
+         //die();
+      }
+   }
+
+   /**
+    * Función donde lista todas las clases apuntadas por un usario específico pasado por parámetros
+    */
+   public function listadoClasesUsuario($id)
+   {
+      $return = [
+         "correcto" => false,
+         "datos" => null,
+         "error" => null
+      ];
+
+      if ($id && is_numeric($id)) {
+         try {
+            $sql = "SELECT `actividades`.`nombre`, `tramo_usuario`.`fecha_actividad`, `tramo_usuario`.`hora_activ`, `tramo_usuario`.`fecha_reserva`
+            FROM `actividades`
+               , `tramo_usuario`, `tramo_horario`
+            WHERE `actividades`.`id` = `tramo_horario`.`actividad_id` and `tramo_horario`.`id` = `tramo_usuario`.`tramo_id` AND `tramo_usuario`.`usuario_id`= :id";
+
+            $query = $this->db->prepare($sql);
+            $query->execute(['id' => $id]);
+
+            //Supervisamos que la consulta se realizó correctamente...
+            if ($query) {
+               $return["correcto"] = true;
+               $return["datos"] = $query->fetchAll(PDO::FETCH_ASSOC);
+            } // o no :(
+         } catch (PDOException $ex) {
+            $return["error"] = $ex->getMessage();
+            //die();
+         }
+         //}
+
+         return $return;
+      }
+   }
+
    //------------------------------------------------------------------------------
    //---------------------------------- MENSAJE -----------------------------------
    //------------------------------------------------------------------------------

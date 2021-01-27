@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-01-2021 a las 00:37:26
+-- Tiempo de generación: 27-01-2021 a las 23:15:39
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.10
 
@@ -39,10 +39,10 @@ CREATE TABLE `actividades` (
 --
 
 INSERT INTO `actividades` (`id`, `nombre`, `descripcion`, `aforo`) VALUES
-(1, 'Ciclismo Indoor', 'El ciclismo indoor o spinning, como se le conoce comúnmente, se define como una actividad física colectiva, realizada sobre una bicicleta especialmente diseñada para tal efecto, a un ritmo determinado, en la que se efectúa un trabajo predominantemente cardiovascular', 20),
 (2, 'Pilates', 'Pilates es un método de ejercicio y movimiento físico diseñado para estirar, fortalecer y equilibrar el cuerpo. Con la práctica sistemática de ejercicios específicos junto con los patrones de respiración, Pilates ha demostrado tener un valor incalculable no sólo para las personas que quieren mantene', 15),
 (8, 'Boxeo', 'El boxeo, en un primer pensamiento, lo asociamos a un deporte de contacto, en el que dos personas combaten utilizando sólo sus puños, los cuales se cubren con unos guantes especiales. En el que su principal objetivo es golpear el mayor número de veces al contrincante por encima de su cintura y dentr', 12),
-(10, 'Cxworx', 'Se enfoca en trabajar principalmente la zona central del cuerpo, también llamado core. Se ejercitan los músculos del abdomen, oblicuos y espalda baja con trabajo de fuerza y tono', 20);
+(10, 'Cxworx', 'Se enfoca en trabajar principalmente la zona central del cuerpo, también llamado core. Se ejercitan los músculos del abdomen, oblicuos y espalda baja con trabajo de fuerza y tono', 20),
+(12, 'Ciclismo Indoor', 'Bicicletas pero bajo techo', 20);
 
 -- --------------------------------------------------------
 
@@ -56,6 +56,16 @@ CREATE TABLE `mensajes` (
   `usu_destino` int(10) NOT NULL,
   `mensaje` varchar(400) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `mensajes`
+--
+
+INSERT INTO `mensajes` (`id`, `usu_origen`, `usu_destino`, `mensaje`) VALUES
+(1, 18, 21, 'Hola user, soy Admin'),
+(2, 18, 16, 'Hola mari, soy el ADMIN'),
+(3, 18, 21, 'Te mando otro desde el ADMIN'),
+(4, 21, 18, 'Te eescribo para probar si va esto, soy el user');
 
 -- --------------------------------------------------------
 
@@ -99,7 +109,11 @@ CREATE TABLE `tramo_horario` (
 
 INSERT INTO `tramo_horario` (`id`, `dia`, `hora_inicio`, `hora_fin`, `actividad_id`, `fecha_alta`, `fecha_baja`) VALUES
 (1, 'Lunes', '10:00', '11:00', 2, '2021-01-06', '0000-00-00'),
-(2, 'Miercoles', '20:00', '20:45', 8, '2021-01-07', '0000-00-00');
+(10, 'Martes', '11:00', '', 2, '2021-01-19', '0000-00-00'),
+(11, 'Jueves', '10:00', '', 8, '2021-01-19', '0000-00-00'),
+(12, 'Miercoles', '12:00', '', 10, '2021-01-19', '0000-00-00'),
+(13, 'Viernes', '11:00', '', 12, '2021-01-19', '0000-00-00'),
+(21, 'Miercoles', '9:00', '', 12, '2021-01-27', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -111,9 +125,20 @@ CREATE TABLE `tramo_usuario` (
   `id` int(10) NOT NULL,
   `tramo_id` int(10) NOT NULL,
   `usuario_id` int(10) NOT NULL,
-  `fecha_actividad` date NOT NULL,
+  `fecha_actividad` varchar(10) NOT NULL,
+  `hora_activ` varchar(5) NOT NULL,
   `fecha_reserva` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `tramo_usuario`
+--
+
+INSERT INTO `tramo_usuario` (`id`, `tramo_id`, `usuario_id`, `fecha_actividad`, `hora_activ`, `fecha_reserva`) VALUES
+(1, 1, 21, 'Lunes', '10:00', '2021-01-24'),
+(2, 1, 16, 'Lunes', '10:00', '2021-01-24'),
+(6, 21, 21, 'Miercoles', '9:00', '2021-01-27'),
+(7, 12, 21, 'Miercoles', '12:00', '2021-01-27');
 
 -- --------------------------------------------------------
 
@@ -143,7 +168,8 @@ CREATE TABLE `usuario` (
 INSERT INTO `usuario` (`id`, `nif`, `nombre`, `apellido1`, `apellido2`, `imagen`, `login`, `password`, `email`, `telefono`, `direccion`, `rol`) VALUES
 (3, '22312313A', 'Adrian', 'Gomez', 'Luna', 'usuario.jpg', 'adri', '83b621ca1ac1f7df26124821387af790d0f22e4f', 'adrigoluna@hotmail.com', 666777889, 'Duque de Ahumada', 1),
 (16, '12312312R', 'maria', 'maria', 'mira', 'usuaria.jpg', 'mari', '5d95cb27f49aafe1eac579adf55ae18deeb49b8c', 'maia@miya.com', 666777822, 'huelva', 1),
-(18, '44221362k', 'admin', 'admin', 'admin', 'admin.jpg', 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'admin@admin.com', 666777822, 'Duque de Ahumada', 0);
+(18, '44221362k', 'admin', 'admin', 'admin', 'admin.jpg', 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'admin@admin.com', 666777822, 'Duque de Ahumada', 0),
+(21, '12312312f', 'user', 'user', 'user', 'usua.jpg', 'user', '12dea96fec20593566ab75692c9949596833adc9', 'user@user', 678123592, 'huelva', 1);
 
 --
 -- Índices para tablas volcadas
@@ -200,31 +226,31 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `actividades`
 --
 ALTER TABLE `actividades`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `mensajes`
 --
 ALTER TABLE `mensajes`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `tramo_horario`
 --
 ALTER TABLE `tramo_horario`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `tramo_usuario`
 --
 ALTER TABLE `tramo_usuario`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- Restricciones para tablas volcadas

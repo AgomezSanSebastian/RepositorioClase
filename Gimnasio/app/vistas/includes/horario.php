@@ -32,7 +32,7 @@
                     ?>
                         <?php if ($dias[0] == $dato["dia"] && $hora == $dato["inicio"]) {
                             echo $dato["nombre"];
-                        ?> <a href="?controller=user&accion=inscribirseActiv&activ=<?= $dato['id'] ?>&user=<?= $_SESSION['id'] ?>">Apuntarse</a>
+                        ?> <a href="?controller=user&accion=inscribirseActiv&activ=<?=$dato['id']?>&user=<?=$_SESSION['id']?>&dia=<?=$dato['dia']?>&inicio=<?=$dato['inicio']?>">Apuntarse</a>
                         <?php } ?>
                     <?php
                     endforeach;
@@ -44,7 +44,7 @@
                     ?>
                         <?php if ($dias[1] == $dato["dia"] && $hora == $dato["inicio"]) {
                             echo $dato["nombre"];
-                            ?> <a href="?controller=user&accion=inscribirseActiv&activ=<?= $dato['id'] ?>&user=<?= $_SESSION['id'] ?>">Apuntarse</a>
+                            ?> <a href="?controller=user&accion=inscribirseActiv&activ=<?=$dato['id']?>&user=<?=$_SESSION['id']?>&dia=<?=$dato['dia']?>&inicio=<?=$dato['inicio']?>">Apuntarse</a>
                         <?php } ?>
                     <?php
                     endforeach;
@@ -56,7 +56,7 @@
                     ?>
                         <?php if ($dias[2] == $dato["dia"] && $hora == $dato["inicio"]) {
                             echo $dato["nombre"];
-                            ?> <a href="?controller=user&accion=inscribirseActiv&activ=<?= $dato['id'] ?>&user=<?= $_SESSION['id'] ?>">Apuntarse</a>
+                            ?> <a href="?controller=user&accion=inscribirseActiv&activ=<?=$dato['id']?>&user=<?=$_SESSION['id']?>&dia=<?=$dato['dia']?>&inicio=<?=$dato['inicio']?>">Apuntarse</a>
                         <?php } ?>
                     <?php
                     endforeach;
@@ -68,7 +68,7 @@
                     ?>
                         <?php if ($dias[3] == $dato["dia"] && $hora == $dato["inicio"]) {
                             echo $dato["nombre"];
-                            ?> <a href="?controller=user&accion=inscribirseActiv&activ=<?= $dato['id'] ?>&user=<?= $_SESSION['id'] ?>">Apuntarse</a>
+                            ?> <a href="?controller=user&accion=inscribirseActiv&activ=<?=$dato['id']?>&user=<?=$_SESSION['id']?>&dia=<?=$dato['dia']?>&inicio=<?=$dato['inicio']?>">Apuntarse</a>
                         <?php } ?>
                     <?php
                     endforeach;
@@ -80,7 +80,7 @@
                     ?>
                         <?php if ($dias[4] == $dato["dia"] && $hora == $dato["inicio"]) {
                             echo $dato["nombre"];
-                            ?> <a href="?controller=user&accion=inscribirseActiv&activ=<?= $dato['id'] ?>&user=<?= $_SESSION['id'] ?>">Apuntarse</a>
+                            ?> <a href="?controller=user&accion=inscribirseActiv&activ=<?=$dato['id']?>&user=<?=$_SESSION['id']?>&dia=<?=$dato['dia']?>&inicio=<?=$dato['inicio']?>">Apuntarse</a>
                         <?php } ?>
                     <?php
                     endforeach;
@@ -91,10 +91,4 @@
         endforeach;
         ?>
     </table>
-    <pre><?php print_r($datos); ?>
-    <?php
-
-    $hola = date("d-m-Y H:i:s");
-    print_r($hola);
-    ?></pre>
 </div>

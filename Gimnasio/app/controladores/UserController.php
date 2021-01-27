@@ -37,6 +37,28 @@ class UserController extends BaseController
     }
 
     /**
+     * Recarga la página inicial por parte del usuario
+     */
+    public function homeUsuario()
+    {
+        $parametros = [
+            "tituloventana" => "Login a la aplicación"
+        ];
+        $this->view->show("HomeUsuario", $parametros);
+    }
+
+    /**
+     * Recarga la página inicial por parte del administrador
+     */
+    public function homeAdmin()
+    {
+        $parametros = [
+            "tituloventana" => "Login a la aplicación"
+        ];
+        $this->view->show("HomeAdmin", $parametros);
+    }
+
+    /**
      * Funcion para cerrar sesion y volver al principio
      */
     public function cerrarSesion()
@@ -48,7 +70,6 @@ class UserController extends BaseController
     /**
      * 
      */
-
     public function listarUser()
     {
         // Almacenamos en el array 'parametros[]'los valores que vamos a mostrar en la vista
@@ -1034,11 +1055,8 @@ class UserController extends BaseController
         // ($parametros["datos"]), que será el que le pasaremos a la vista para visualizarlos
         if ($resultModelo["correcto"]) :
             $parametros["datos"] = $resultModelo["datos"];
-            //Definimos el mensaje para el alert de la vista de que todo fue correctamente
-            $this->mensajes[] = [
-                "tipo" => "success",
-                "mensaje" => "El listado se realizó correctamente"
-            ];
+        //Definimos el mensaje para el alert de la vista de que todo fue correctamente
+
         else :
             //Definimos el mensaje para el alert de la vista de que se produjeron errores al realizar el listado
             $this->mensajes[] = [
@@ -1259,6 +1277,47 @@ class UserController extends BaseController
         $this->view->show("MostrarClasesAdmin", $parametros);
     }
 
+
+    /**
+     * Muestra todas las clases en que el usario pasado por la URL se haya apuntado
+     */
+    public function mostrarClasesUser()
+    {
+        // Almacenamos en el array 'parametros[]'los valores que vamos a mostrar en la vista
+        $parametros = [
+            "tituloventana" => "Mostrar clases del usuario",
+            "datos" => NULL,
+            "mensajes" => []
+        ];
+
+        $id = $_GET['id'];
+
+        // Realizamos la consulta y almacenamos los resultados en la variable $resultModelo
+
+        $resultModelo = $this->modelo->listadoClasesUsuario($id);
+
+        if ($resultModelo["correcto"]) :
+            $parametros["datos"] = $resultModelo["datos"];
+            //Definimos el mensaje para el alert de la vista de que todo fue correctamente
+            $this->mensajes[] = [
+                "tipo" => "success",
+                "mensaje" => "El listado se realizó correctamente"
+            ];
+        else :
+            //Definimos el mensaje para el alert de la vista de que se produjeron errores al realizar el listado
+            $this->mensajes[] = [
+                "tipo" => "danger",
+                "mensaje" => "El listado no pudo realizarse correctamente!! :( <br/>({$resultModelo["error"]})"
+            ];
+        endif;
+        //Asignamos al campo 'mensajes' del array de parámetros el valor del atributo 
+        //'mensaje', que recoge cómo finalizó la operación:
+        $parametros["mensajes"] = $this->mensajes;
+
+        // Incluimos la vista en la que visualizaremos los datos o un mensaje de error
+        $this->view->show("MostrarClasesUser", $parametros);
+    }
+
     /**
      * 
      */
@@ -1269,16 +1328,42 @@ class UserController extends BaseController
             "datos" => [],
             "mensajes" => []
         ];
-        //Cogemos el id del usuario a cambiar y el nuevo rol
-        $activ = $_GET['activ'];
-        $user = $_GET['user'];
+        //Cogemos el id del usuario a cambiar y el nuevo rol        
 
-        // Realizamos la consulta y almacenamos los resultados en la variable $resultModelo
-        $resultModelo = $this->modelo->listarHorario();
-        //Llamamos al modelo
-        // $this->modelo->cambiarRolUser($datos);
+        $activ = $_GET['activ'];    //id
+        $user = $_GET['user'];      //id
+        $dia = $_GET['dia'];
+        $inicio = $_GET['inicio'];
+        $fecha_alta = date("Y-m-d");
+
+        $resulBusqueda = $this->modelo->estaApuntadoClase($activ, $user);
+
+        if ($resulBusqueda["correcto"]) :
+            //Definimos el mensaje para el alert de la vista de que se produjeron errores al realizar el listado
+
+            $resultModelo = $this->modelo->apuntarUsuarioClase([
+                'dia' => $dia,
+                'activ' => $activ,
+                'user' => $user,
+                'inicio' => $inicio,
+                'fecha_alta' => $fecha_alta
+            ]);
+            $this->mensajes[] = [
+                "tipo" => "success",
+                "mensaje" => "Te has registado a esa actividad correctamente :)"
+            ];
+
+
+        else :
+            //Definimos el mensaje para el alert de la vista de que se produjeron errores al realizar el listado
+            $this->mensajes[] = [
+                "tipo" => "danger",
+                "mensaje" => "Ya te has registado a esa actividad :("
+            ];
+        endif;
+
         //Recargamos la página
-        $this->listarUser();
+        $this->horario();
     }
 
 

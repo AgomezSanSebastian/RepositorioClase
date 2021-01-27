@@ -17,4 +17,5 @@ class HomeController extends BaseController
       ];
       $this->view->show("inicio", $parametros);
    }
+   
 }

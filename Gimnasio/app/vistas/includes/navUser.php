@@ -1,7 +1,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="../index.php">Gimnasio Adrian DAW2</a>
+        <a class="navbar-brand" href="?controller=User&accion=homeUsuario">Gimnasio Adrian DAW2</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -26,7 +26,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarActividades">
                         <a class="dropdown-item" href="?controller=User&accion=listarActividades">Listar Actividades</a>
                         <a class="dropdown-item" href="?controller=User&accion=horario">Horario</a>
-                        <a class="dropdown-item" href="home.php?page=horario">Clases apuntadas</a>
+                        <a class="dropdown-item" href="?controller=User&accion=mostrarClasesUser&id=<?= $_SESSION['id']; ?>">Clases apuntadas</a>
                     </div>
                 </li>
 
