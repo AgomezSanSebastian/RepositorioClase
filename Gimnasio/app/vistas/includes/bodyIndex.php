@@ -1,4 +1,4 @@
-<div class="indexFondo">
+<div class="indexFondo mt-5 p-3">
     <div class="mask d-flex justify-content-center align-items-center">
         <!-- Content -->
         <div class="container py-5 my-5">

@@ -448,8 +448,10 @@ class UserModel extends BaseModel
    }
 
    /**
-    * Comprobar si el usuario es el correcto
-    * 
+    * Comprobar si el usuario son de la base de datos. Para ello obtiene como parámetros 2 valores, 
+    * el login y el password. 
+    * @param type $datos 
+    * @return array con 1 bool y mensaje de error si lo hubiera
     */
    public function isUser($datos)
    {

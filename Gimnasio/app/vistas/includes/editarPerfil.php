@@ -72,16 +72,18 @@
                     </div>
                 </div>
 
-                <div class="row mt-5">
-                    <label class="col-lg-5"></label>
-                    <button class="btn btn-secondary btn-lg" type="submit" name="submit">Ingresar</button>
-                </div>
-
                 <div class="form-group row invisible">
                     <div class="col-lg-7 text-left">
                         <input type="text" class="form-control" id="id" name="id" value="<?= $datos["id"] ?>" />
                     </div>
                 </div>
+                
+                <div class="row mt-5">
+                    <label class="col-lg-5"></label>
+                    <button class="btn btn-secondary btn-lg" type="submit" name="submit">Editar perfil</button>
+                </div>
+
+
                 <div class="form-group row invisible">
                     <div class="col-lg-7 text-left">
                         <input type="text" class="form-control" id="login" name="login" value="<?= $login ?>" />
