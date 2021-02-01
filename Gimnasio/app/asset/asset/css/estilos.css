@@ -1,0 +1,28 @@
+body {
+    background-color: #f1f1f1;
+}
+
+.indexFondo {
+    background-image: url("../img/fondo.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+}
+
+.indexUser {
+    background-image: url("../img/gym.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+}
+
+
+/*---------------------------------*/
+
+.form_login {
+    background-color: white;
+    border: solid teal;
+    padding-bottom: 50px;
+    padding-top: 30px;
+    color: darkred;
+}
