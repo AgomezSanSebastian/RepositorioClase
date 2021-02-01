@@ -47,7 +47,8 @@ class IndexController extends BaseController
    public function registro()
    {
       $parametros = [
-         "tituloventana" => "Registro a la aplicación"
+         "tituloventana" => "Registro a la aplicación",
+         "mensajes" => NULL
       ];
       $this->view->show("Registro",$parametros);
       

@@ -10,6 +10,12 @@ class HomeController extends BaseController
       parent::__construct();
    }
 
+      
+   /**
+    * Método que carga el index inicial
+    *
+    * @return void
+    */
    public function index()
    {
       $parametros = [

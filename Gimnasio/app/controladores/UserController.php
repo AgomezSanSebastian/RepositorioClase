@@ -67,8 +67,11 @@ class UserController extends BaseController
         $this->view->show("Inicio");
     }
 
+        
     /**
-     * 
+     * Lista todos los usuario de la BD
+     *
+     * @return void
      */
     public function listarUser()
     {
@@ -76,25 +79,51 @@ class UserController extends BaseController
         $parametros = [
             "tituloventana" => "Base de Datos con PHP y PDO",
             "datos" => NULL,
-            "mensajes" => []
+            "mensajes" => [],
+            "totalregistros" => NULL,
+            "pagina" => NULL,
+            "numpaginas" => NULL
         ];
-        // Realizamos la consulta y almacenamos los resultados en la variable $resultModelo
-        $resultModelo = $this->modelo->listado();
+        //Empezamos con la paginación
+        //Establecemos el número de registros a mostrar por página,por defecto 2
+        $regsxpag = (isset($_GET['regsxpag'])) ? (int)$_GET['regsxpag'] : 2;
+        //Establecemos la página que vamos a mostrar, por página,por defecto la 1
+        $pagina = (isset($_GET['pagina'])) ? (int)$_GET['pagina'] : 1;
+        $totalregistros = null;
+
+
+        //Definimos la variable $inicio que indique la posición del registro desde el que se
+        // mostrarán los registros de una página dentro de la paginación.
+        $offset = ($pagina > 1) ? (($pagina - 1) * $regsxpag) : 0;
+        //SQL_CALC_FOUND_ROWS está siendo depreciado en MySQL
+        //Vamos a usar COUNT en su lugar
+        //Calculamos el número de registros obtenidos
+
+        $resultPaginar = $this->modelo->paginarUsuarios($regsxpag, $offset);
         // Si la consulta se realizó correctamente transferimos los datos obtenidos
         // de la consulta del modelo ($resultModelo["datos"]) a nuestro array parámetros
         // ($parametros["datos"]), que será el que le pasaremos a la vista para visualizarlos
-        if ($resultModelo["correcto"]) :
-            $parametros["datos"] = $resultModelo["datos"];
+        if ($resultPaginar["correcto"]) :
+            $parametros["datos"] = $resultPaginar["datos"];
             //Definimos el mensaje para el alert de la vista de que todo fue correctamente
             $this->mensajes[] = [
                 "tipo" => "success",
                 "mensaje" => "El listado se realizó correctamente"
             ];
+
+            $parametros["totalregistros"] = $resultPaginar["totalregistros"];
+            $totalregistros = $resultPaginar["totalregistros"];
+
+            //Determinamos el número de páginas de la que constará mi paginación
+            $parametros["numpaginas"] = ceil($totalregistros / $regsxpag);
+            $parametros["pagina"] = $pagina;
+            $parametros["regsxpag"] = $regsxpag;
+
         else :
             //Definimos el mensaje para el alert de la vista de que se produjeron errores al realizar el listado
             $this->mensajes[] = [
                 "tipo" => "danger",
-                "mensaje" => "El listado no pudo realizarse correctamente!! :( <br/>({$resultModelo["error"]})"
+                "mensaje" => "El listado no pudo realizarse correctamente!! :( <br/>({$resultPaginar["error"]})"
             ];
         endif;
         //Asignamos al campo 'mensajes' del array de parámetros el valor del atributo 
@@ -104,8 +133,78 @@ class UserController extends BaseController
         $this->view->show("ListarUsuarios", $parametros);
     }
 
+    
     /**
-     * 
+     * Método para buscar cualquier coincidencia en la BD por parte de la tabla usuarios
+     *
+     * @return void
+     */
+    public function buscar()
+    {
+         // Almacenamos en el array 'parametros[]'los valores que vamos a mostrar en la vista
+         $parametros = [
+            "tituloventana" => "Base de Datos con PHP y PDO",
+            "datos" => NULL,
+            "mensajes" => [],
+            "totalregistros" => NULL,
+            "pagina" => NULL,
+            "numpaginas" => NULL
+        ];
+        //Empezamos con la paginación
+        //Establecemos el número de registros a mostrar por página,por defecto 2
+        $regsxpag = (isset($_GET['regsxpag'])) ? (int)$_GET['regsxpag'] : 2;
+        //Establecemos la página que vamos a mostrar, por página,por defecto la 1
+        $pagina = (isset($_GET['pagina'])) ? (int)$_GET['pagina'] : 1;
+        $totalregistros = null;
+        $palabra = $_POST['nombre'];
+
+
+        //Definimos la variable $inicio que indique la posición del registro desde el que se
+        // mostrarán los registros de una página dentro de la paginación.
+        $offset = ($pagina > 1) ? (($pagina - 1) * $regsxpag) : 0;
+        //SQL_CALC_FOUND_ROWS está siendo depreciado en MySQL
+        //Vamos a usar COUNT en su lugar
+        //Calculamos el número de registros obtenidos
+
+        $resultPaginar = $this->modelo->paginarUsuariosBuscar($regsxpag, $offset,$palabra);
+        // Si la consulta se realizó correctamente transferimos los datos obtenidos
+        // de la consulta del modelo ($resultModelo["datos"]) a nuestro array parámetros
+        // ($parametros["datos"]), que será el que le pasaremos a la vista para visualizarlos
+        if ($resultPaginar["correcto"]) :
+            $parametros["datos"] = $resultPaginar["datos"];
+            //Definimos el mensaje para el alert de la vista de que todo fue correctamente
+            $this->mensajes[] = [
+                "tipo" => "success",
+                "mensaje" => "El listado se realizó correctamente"
+            ];
+
+            $parametros["totalregistros"] = $resultPaginar["totalregistros"];
+            $totalregistros = $resultPaginar["totalregistros"];
+
+            //Determinamos el número de páginas de la que constará mi paginación
+            $parametros["numpaginas"] = ceil($totalregistros / $regsxpag);
+            $parametros["pagina"] = $pagina;
+            $parametros["regsxpag"] = $regsxpag;
+
+        else :
+            //Definimos el mensaje para el alert de la vista de que se produjeron errores al realizar el listado
+            $this->mensajes[] = [
+                "tipo" => "danger",
+                "mensaje" => "El listado no pudo realizarse correctamente!! :( <br/>({$resultPaginar["error"]})"
+            ];
+        endif;
+        //Asignamos al campo 'mensajes' del array de parámetros el valor del atributo 
+        //'mensaje', que recoge cómo finalizó la operación:
+        $parametros["mensajes"] = $this->mensajes;
+        // Incluimos la vista en la que visualizaremos los datos o un mensaje de error
+        $this->view->show("ListarUsuarios", $parametros);
+    }
+
+        
+    /**
+     * Lista los usuario no activados aún
+     *
+     * @return void
      */
     public function listarNoActivos()
     {
@@ -142,8 +241,11 @@ class UserController extends BaseController
     }
 
 
+        
     /**
-     * 
+     * Cambia el rol de un usuario en concreto de los no activado 
+     *
+     * @return void
      */
     public function cambiarRol()
     {
@@ -156,11 +258,14 @@ class UserController extends BaseController
         //Llamamos al modelo
         $this->modelo->cambiarRolUser($datos);
         //Recargamos la página
-        $this->view->show("ListarNoActivos");
+        $this->ListarNoActivos();
     }
 
+        
     /**
-     * 
+     * Cambia el rol un usuario en concreto
+     *
+     * @return void
      */
     public function cambiarRolActivos()
     {
@@ -176,7 +281,12 @@ class UserController extends BaseController
         $this->listarUser();
     }
 
-
+    
+    /**
+     * Carga la ventana de editar usuario
+     *
+     * @return void
+     */
     public function editarUsuario()
     {
         $parametros = [
@@ -417,7 +527,12 @@ class UserController extends BaseController
         $this->view->show("EditarUsuario", $parametros);
     }
 
-    //---------------------------------------------------------------------------------------------
+    //---------------------------------------------------------------------------------------------    
+    /**
+     * Método que edita un usuario en concreto
+     *
+     * @return void
+     */
     public function editarUser1()
     {
         /**
@@ -547,8 +662,11 @@ class UserController extends BaseController
         $this->view->show("EditarUsuario", $parametros);
     }
 
+        
     /**
-     * 
+     * Método que borra un usuario en concreto
+     *
+     * @return void
      */
     public function deluser()
     {
@@ -581,8 +699,11 @@ class UserController extends BaseController
     }
 
 
+       
     /**
-     * 
+     * Método que edita el perfil de un usuario por parte de ese mismo usuario
+     *
+     * @return void
      */
     public function editarPerfil()
     {
@@ -720,8 +841,11 @@ class UserController extends BaseController
     //---------------------------------- ACTIVIDADES -------------------------------
     //------------------------------------------------------------------------------
 
+        
     /**
-     * 
+     * Lista todas las actividades que tenemos en la BD
+     *
+     * @return void
      */
     public function listarActividades()
     {
@@ -758,8 +882,11 @@ class UserController extends BaseController
     }
 
 
+        
     /**
-     * 
+     * Lista todas las actividades que tenemos por parte del ADMINISTRADOR
+     *
+     * @return void
      */
     public function listarActividadesAdmin()
     {
@@ -795,8 +922,11 @@ class UserController extends BaseController
         $this->view->show("ListarActividadesAdmin", $parametros);
     }
 
+        
     /**
-     * 
+     * Agregar una nueva actividad a la BD
+     *
+     * @return void
      */
     public function agregarActividad()
     {
@@ -864,8 +994,11 @@ class UserController extends BaseController
         $this->listarActividadesAdmin();
     }
 
+        
     /**
-     * 
+     * Método para editar una actividad en concreto
+     *
+     * @return void
      */
     public function editarActiv()
     {
@@ -963,9 +1096,12 @@ class UserController extends BaseController
         $this->view->show("EditarActividad", $parametros);
     }
 
+        
     /**
      * Método de la clase controlador que realiza la eliminación de una actividad a 
      * través del campo id
+     *
+     * @return void
      */
     public function delActividad()
     {
@@ -1000,8 +1136,11 @@ class UserController extends BaseController
     //------------------------------------------------------------------------------
     //---------------------------------- HORARIO -----------------------------------
     //------------------------------------------------------------------------------
+    
     /**
      * Muestra el horario del gimnasio por parte del Adminitrador
+     *
+     * @return void
      */
     public function listarHorarioAdmin()
     {
@@ -1037,8 +1176,11 @@ class UserController extends BaseController
         $this->view->show("HorarioAdmin", $parametros);
     }
 
+    
     /**
      * Muestra el horario del gimnasio por parte de los usuarios
+     *
+     * @return void
      */
     public function horario()
     {
@@ -1071,10 +1213,12 @@ class UserController extends BaseController
         $this->view->show("Horario", $parametros);
     }
 
+    
     /**
      * Función que agrega una actividad al horario por parte del administrador.
      * Carga la vista para agregar esa actividad al horario
-     * 
+     *
+     * @return void
      */
     public function agregaActiv()
     {
@@ -1116,9 +1260,11 @@ class UserController extends BaseController
         $this->view->show("ActivHorario", $parametros);
     }
 
-
+    
     /**
      * Vista cargada para agregar una actividad al horario y vuelve a cargar el horario
+     *
+     * @return void
      */
     public function guardarActivHorario()
     {
@@ -1160,8 +1306,11 @@ class UserController extends BaseController
         $this->listarHorarioAdmin();
     }
 
+    
     /**
      * Funcion que borra del horario una actividad y recarga el horario.
+     *
+     * @return void
      */
     public function delHorarioActividad()
     {
@@ -1193,8 +1342,11 @@ class UserController extends BaseController
         $this->listarHorarioAdmin();
     }
 
+    
     /**
      * Carga la vista del administrador de todas las clases con los socios apuntados
+     *
+     * @return void
      */
     public function MostrarClasesAdmin()
     {
@@ -1232,8 +1384,11 @@ class UserController extends BaseController
         $this->view->show("MostrarClasesAdmin", $parametros);
     }
 
+    
     /**
      * Carga la tabla de las clases de los socios apuntados
+     *
+     * @return void
      */
     public function CargarClasesAdmin()
     {
@@ -1277,9 +1432,11 @@ class UserController extends BaseController
         $this->view->show("MostrarClasesAdmin", $parametros);
     }
 
-
+    
     /**
      * Muestra todas las clases en que el usario pasado por la URL se haya apuntado
+     *
+     * @return void
      */
     public function mostrarClasesUser()
     {
@@ -1318,8 +1475,11 @@ class UserController extends BaseController
         $this->view->show("MostrarClasesUser", $parametros);
     }
 
+    
     /**
-     * 
+     * Método que sirve para inscribir a un usuario
+     *
+     * @return void
      */
     public function inscribirseActiv()
     {
@@ -1371,8 +1531,11 @@ class UserController extends BaseController
     //---------------------------------- Mensaje -----------------------------------
     //------------------------------------------------------------------------------
 
+    
     /**
      * Carga los mensajes para poder escribir 1 nuevo y leer los mensajes que tengas
+     *
+     * @return void
      */
     public function cargarMensaje()
     {
@@ -1410,8 +1573,11 @@ class UserController extends BaseController
         $this->view->show("MensajeAdmin", $parametros);
     }
 
+    
     /**
      * Carga los mensajes para poder escribir 1 nuevo y leer los mensajes que tengas
+     *
+     * @return void
      */
     public function cargarMensajeUser()
     {
@@ -1449,9 +1615,11 @@ class UserController extends BaseController
         $this->view->show("Mensaje", $parametros);
     }
 
-
+    
     /**
-     * Agrega un mensaje a la BD
+     * Agrega un mensaje a la BD por parte del ADMINISTADOR
+     *
+     * @return void
      */
     public function AgregarMensajeAdmin()
     {
@@ -1491,8 +1659,11 @@ class UserController extends BaseController
         $this->cargarMensaje();
     }
 
+    
     /**
-     * Agrega un mensaje a la BD
+     * Agrega un mensaje a la BD por parte de un usuario
+     *
+     * @return void
      */
     public function AgregarMensajeUser()
     {
@@ -1532,8 +1703,11 @@ class UserController extends BaseController
         $this->cargarMensajeUser();
     }
 
+    
     /**
      * Lista los mensajes recibidos por el admin
+     *
+     * @return void
      */
     public function VerMensaje()
     {
@@ -1572,8 +1746,11 @@ class UserController extends BaseController
         $this->view->show("VerMensajeAdmin", $parametros);
     }
 
+    
     /**
      * Lista los mensajes recibidos al usuario
+     *
+     * @return void
      */
     public function VerMensajeUser()
     {

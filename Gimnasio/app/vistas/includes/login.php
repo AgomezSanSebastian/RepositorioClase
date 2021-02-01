@@ -27,17 +27,22 @@
                     </div>
                 </div>
                 <div class="form-group row mt-4">
-
-                    <label class="col-lg-12 col-form-label text-center"><input type="checkbox" name="recuerdo"  <?php if (isset($_COOKIE['recuerdo'])) {
+                    <label class="col-lg-12 col-form-label text-center">
+                        <input type="checkbox" name="recuerdo" <?php if (isset($_COOKIE['recuerdo'])) {
                                                                     echo " checked";
-                                                                } ?>>  Recuérdame :) </label>
-                        
-
+                                                                } ?>> Recuérdame :) 
+                    </label>
                 </div>
+
+                <!-- Recaptcha -->
+                
+  
+                <div class="g-recaptcha" data-sitekey="6LcMP0QaAAAAAHRe80tcCDklmUZ0F8MYpy-HGNWg"></div>                                                
+
+
                 <div class="row mt-5 text-center">
                     <label class="col-lg-5"></label>
                     <button class="btn btn-secondary btn-lg" type="submit" name="submit">Acceder</button>
-
                 </div>
             </form>
         </div>

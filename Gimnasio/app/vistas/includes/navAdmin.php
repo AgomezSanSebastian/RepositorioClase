@@ -13,7 +13,7 @@
                     Usuario
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarUsuario">
-                    <a class="dropdown-item" href="?controller=User&accion=listarUser">Listar usuarios</a>
+                    <a class="dropdown-item" href="?controller=User&accion=listarUser&regsxpag=2">Listar usuarios</a>
                     <a class="dropdown-item" href="?controller=User&accion=listarNoActivos">Usuarios no activados</a>
                 </div>
             </li>

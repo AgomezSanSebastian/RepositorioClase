@@ -324,9 +324,12 @@ class UserModel extends BaseModel
       return $return;
    }
 
+   
    /**
     * Lista el usuario con el id específico
-    * 
+    *
+    * @param  mixed $id
+    * @return void
     */
    public function listaUsuario($id)
    {
@@ -355,8 +358,12 @@ class UserModel extends BaseModel
       return $return;
    }
 
+   
    /**
-    * 
+    * Muestra todos los datos de un usuario pasado por parámetro 
+    *
+    * @param  mixed $login
+    * @return void
     */
    public function buscarPerfil($login)
    {
@@ -384,6 +391,7 @@ class UserModel extends BaseModel
 
       return $return;
    }
+
    /**
     * Cambia el rol del usuario, pasa a de usuario normal a administrador o al revés
     * @param type $datos 
@@ -420,8 +428,11 @@ class UserModel extends BaseModel
       return $return;
    }
 
+   
    /**
     * Lista de usurios nuevos que aún no han sido activados
+    *
+    * @return void
     */
    public function faltaPorActivar()
    {
@@ -480,8 +491,12 @@ class UserModel extends BaseModel
       return $return;
    }
 
+   
    /**
     * Función que comprueba si el usuario está activado o no
+    *
+    * @param  mixed $login
+    * @return void
     */
    public function userActivado($login)
    {
@@ -512,8 +527,11 @@ class UserModel extends BaseModel
    //---------------------------------- ACTIVIDADES -------------------------------
    //------------------------------------------------------------------------------
 
+   
    /**
     * Funcion que devuelve un array con todas las actividades que tenemos
+    *
+    * @return void
     */
    public function listarActiv()
    {
@@ -539,8 +557,12 @@ class UserModel extends BaseModel
       return $return;
    }
 
+   
    /**
     * Función que agrega a la BD una actividad
+    *
+    * @param  mixed $datos
+    * @return void
     */
    public function agregarActiv($datos)
    {
@@ -574,8 +596,12 @@ class UserModel extends BaseModel
       }
    }
 
+   
    /**
     * Función que modifica una actividad de la BD
+    *
+    * @param  mixed $datos
+    * @return void
     */
    public function editarActividad($datos)
    {
@@ -610,9 +636,12 @@ class UserModel extends BaseModel
       return $return;
    }
 
+   
    /**
     * Función que devuelve una actividad que coincida con el parámetro que se le haya enviado
-    
+    *
+    * @param  mixed $id
+    * @return void
     */
    public function listaAct($id)
    {
@@ -686,8 +715,11 @@ class UserModel extends BaseModel
    //---------------------------------- HORARIO -----------------------------------
    //------------------------------------------------------------------------------
 
+   
    /**
     * Función que devuelve un array con todas las activides que tenemos en el horario
+    *
+    * @return void
     */
    public function listarHorario()
    {
@@ -715,8 +747,12 @@ class UserModel extends BaseModel
       return $return;
    }
 
+   
    /**
     * Funcion que agrega una actividad al horario
+    *
+    * @param  mixed $datos
+    * @return void
     */
    public function agregaActivHorario($datos)
    {
@@ -751,9 +787,12 @@ class UserModel extends BaseModel
       }
    }
 
-
+   
    /**
     * Función que borra del horario una actividad
+    *
+    * @param  mixed $id
+    * @return void
     */
    public function delHorarioActiv($id)
    {
@@ -789,8 +828,11 @@ class UserModel extends BaseModel
       return $return;
    }
 
+   
    /**
     * Lista la primera clase de la lista de ID 
+    *
+    * @return void
     */
    public function listarClasesPrimera()
    {
@@ -820,10 +862,12 @@ class UserModel extends BaseModel
       return $return;
    }
 
-
-
+   
    /**
     * Lista los usuarios con el id pasado por parametros del tramo_Horario
+    *
+    * @param  mixed $id
+    * @return void
     */
    public function listarClasesUsuarios($id)
    {
@@ -858,7 +902,14 @@ class UserModel extends BaseModel
          return $return;
       }
    }
-
+   
+   /**
+    * Comprueba si un usurio esta apuntado a una actividad
+    *
+    * @param  mixed $tramo_id
+    * @param  mixed $usuario_id
+    * @return void
+    */
    public function estaApuntadoClase($tramo_id, $usuario_id)
    {
       $return = [
@@ -886,9 +937,12 @@ class UserModel extends BaseModel
       return $return;
    }
 
-
+   
    /**
     * Función donde un usuario puede apuntarte a una clase específica
+    *
+    * @param  mixed $datos
+    * @return void
     */
    public function apuntarUsuarioClase($datos)
    {
@@ -924,8 +978,12 @@ class UserModel extends BaseModel
       }
    }
 
+   
    /**
     * Función donde lista todas las clases apuntadas por un usario específico pasado por parámetros
+    *
+    * @param  mixed $id
+    * @return void
     */
    public function listadoClasesUsuario($id)
    {
@@ -964,8 +1022,12 @@ class UserModel extends BaseModel
    //---------------------------------- MENSAJE -----------------------------------
    //------------------------------------------------------------------------------
 
+   
    /**
     * Agregamos un nuevo mensaje a la bd
+    *
+    * @param  mixed $datos
+    * @return void
     */
    public function agregaMensaje($datos)
    {
@@ -998,9 +1060,12 @@ class UserModel extends BaseModel
          //die();
       }
    }
-
+   
    /**
     * Muestra todos los usuarios y  mensajes recibidos 
+    *
+    * @param  mixed $usu_destino
+    * @return void
     */
    public function listarMensajes($usu_destino)
    {
@@ -1026,6 +1091,103 @@ class UserModel extends BaseModel
             $return["error"] = $ex->getMessage();
             //die();
          }
+      }
+
+      return $return;
+   }
+
+
+   //------------------------------------------------------------------------------
+   //---------------------------------- PAGINAR -----------------------------------
+   //------------------------------------------------------------------------------
+
+   
+   /**
+    * Función que consigo los datos necesarios para poder hacer una paginación por parte 
+    * del administrador. Sobre la table usuarios activos de la base de datos.
+    *
+    * @param  mixed $regsxpag
+    * @param  mixed $offset
+    * @return void
+    */
+   public function paginarUsuarios($regsxpag, $offset)
+   {
+      $return = [
+         "correcto" => FALSE,
+         "datos" => NULL,
+         "error" => NULL
+      ];
+      //Realizamos la consulta...
+      try {  //Definimos la instrucción SQL  
+         $sql = "SELECT count(*) as total FROM usuario";
+         // Hacemos directamente la consulta al no tener parámetros
+         $totalregistros = $this->db->query($sql);
+         $totalregistros = $totalregistros->fetch()['total'];
+
+         //Sintaxis más clara
+         $sql = "SELECT * FROM usuario  ORDER BY nombre LIMIT $regsxpag OFFSET $offset";
+
+         $registros = $this->db->prepare($sql);
+         $registros->execute();
+
+         //Supervisamos si la inserción se realizó correctamente... 
+         if ($registros) :
+            $return["correcto"] = TRUE;
+            $return["datos"] = $registros->fetchAll(PDO::FETCH_ASSOC);
+            $return["totalregistros"] = $totalregistros;
+         endif; // o no :(
+      } catch (PDOException $ex) {
+         $return["error"] = $ex->getMessage();
+      }
+
+      return $return;
+   }
+
+   
+   /**
+    * Función que busca alguna coincidencia con el parámetro @palabra. A parte 
+    * también hace la paginación.
+    *
+    * @param  mixed $regsxpag
+    * @param  mixed $offset
+    * @param  mixed $palabra
+    * @return void
+    */
+   public function paginarUsuariosBuscar($regsxpag, $offset,$palabra)
+   {
+      $return = [
+         "correcto" => FALSE,
+         "datos" => NULL,
+         "error" => NULL
+      ];
+      //Realizamos la consulta...
+      try {  //Definimos la instrucción SQL  
+         $sql = "SELECT count(*) as total 
+               FROM usuario 
+               WHERE nombre 
+                  LIKE '%$palabra%' OR apellido1 LIKE '%$palabra%' OR apellido2 LIKE '%$palabra%' 
+                  OR login LIKE '%$palabra%' OR email LIKE '%$palabra%' OR direccion LIKE '%$palabra%'";
+         // Hacemos directamente la consulta al no tener parámetros
+         $totalregistros = $this->db->query($sql);
+         $totalregistros = $totalregistros->fetch()['total'];
+
+         //Sintaxis más clara
+         $sql = "SELECT * FROM usuario 
+               WHERE nombre LIKE '%$palabra%' OR apellido1 LIKE '%$palabra%' OR apellido2 LIKE '%$palabra%' OR nif LIKE '%$palabra%'
+                  OR login LIKE '%$palabra%' OR email LIKE '%$palabra%' OR direccion LIKE '%$palabra%' OR telefono LIKE '%$palabra%'
+                  ORDER BY nombre LIMIT $regsxpag OFFSET $offset";
+
+         $registros = $this->db->prepare($sql);
+         $registros->execute();
+
+         //Supervisamos si la inserción se realizó correctamente... 
+         if ($registros) :
+            $return["correcto"] = TRUE;
+            $return["datos"] = $registros->fetchAll(PDO::FETCH_ASSOC);
+            $return["totalregistros"] = $totalregistros;
+         endif; // o no :(
+      } catch (PDOException $ex) {
+         $return["error"] = $ex->getMessage();
       }
 
       return $return;

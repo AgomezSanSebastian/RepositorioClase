@@ -18,6 +18,12 @@ class LoginController extends BaseController
         $this->mensajes = [];
     }
 
+        
+    /**
+     * Carga la ventana del login
+     *
+     * @return void
+     */
     public function index()
     {
         $parametros = [
@@ -26,17 +32,24 @@ class LoginController extends BaseController
         $this->view->show("Login", $parametros);
     }
 
+  
     /**
      * Método que comprueba que el usuario se loguea correctamente siempre que tenga cuenta, 
      * si no la tiene daría un error
+     *
+     * @return void
      */
     public function isUser()
     {
         // Array asociativo que almacenará los mensajes de error que se generen por cada campo
         $errores = array();
 
+
         //Si se ha pulsado el boton de enviar...
         if (isset($_POST['submit'])) {
+
+            $captcha = $_POST["g-recaptcha-response"];
+            $secret = "6LcMP0QaAAAAAIh7rrLHnN6K-7WMHLDOQhETCX5r";
 
             //Si usuario o password estan vacios...
             if (empty($_POST['login']) || empty($_POST['password'])) {
@@ -49,105 +62,139 @@ class LoginController extends BaseController
 
                 $this->view->show("Login", $parametros);
             } else {
-                $login = $_POST['login'];
-                $password = sha1($_POST['password']);
+                // VALIDACiÓN CAPTCHA
+                if (!$captcha) {
+                    $this->mensajes[] = [
+                        "tipo" => "danger",
+                        "mensaje" => "No has validado el Captcha"
+                    ];
+                    $parametros["mensajes"] = $this->mensajes;
+    
+                    $this->view->show("Login", $parametros);
+                } else {
+                    $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$captcha");
+                    $arr=json_decode($response,true);
 
-                //Preguntamos por el usuario y contraseña a la bbdd para saber si son correcto o no
-                $resultado = $this->modelo->isUser([
-                    'login' => $login,
-                    'password' => $password
-                ]);
-
-                if ($resultado['correcto']) {
-                    //Preguntamos si el usuario esta validado pasando su nombre de usuario.
-                    $datos = $this->modelo->userActivado($login);
-
-                    //Se crea sesión del usuario
-                    $_SESSION['login'] = $login;
-                    //Guardamos su id y rol.
-                    $_SESSION['id'] = $datos['datos']['id'];
-                    $_SESSION['rol'] = $datos['datos']['rol'];
-
-
-                    //Si el rol es diferente a 2, sigue adelante. El 2 falta por activarlo.
-                    if ($_SESSION['rol'] != 2) {
-
-                        //Si el usuario y contraseña son correctos:
-                        if ($resultado['correcto'] == TRUE) {
-
-                            //Implementación de la funcion recuerdame que guarda en usuario y contraseña en cookies. 
-                             if (isset($_POST['recuerdo']) && ($_POST['recuerdo'] == "on")) { // Creamos las cookies para ambas variables
-                             setcookie('login', $login, time() + (15 * 24 * 60 * 60));
-                             setcookie('password', $_POST['password'], time() + (15 * 24 * 60 * 60));
-                             setcookie('recuerdo', $_POST['recuerdo'], time() + (15 * 24 * 60 * 60));
-                         } else { // Eliminamos las cookies vaciandolas
-                             if (isset($_COOKIE['login'])) {
-                                 setcookie('login', "");
-                             }
-                             if (isset($_COOKIE['password'])) {
-                                 setcookie('password', "");
-                             }
-                             if (isset($_COOKIE['recuerdo'])) {
-                                 setcookie('recuerdo', "");
-                             }
-                         }
-
-                            $parametros['datos'] = $resultado['datos'];
-                            //Actualizamos las variables de sesion con toda la informacion del usuario.
-                            $_SESSION['nif'] = $parametros['datos'][0]['nif'];
-                            $_SESSION['nombre'] = $parametros['datos'][0]['nombre'];
-                            $_SESSION['apellido1'] = $parametros['datos'][0]['apellido1'];
-                            $_SESSION['apellido2'] = $parametros['datos'][0]['apellido2'];
-                            $_SESSION['email'] = $parametros['datos'][0]['email'];
-                            $_SESSION['telefono'] = $parametros['datos'][0]['telefono'];
-                            $_SESSION['direccion'] = $parametros['datos'][0]['direccion'];
-                            $_SESSION['imagen'] = $parametros['datos'][0]['imagen'];
-                            $_SESSION['password'] = $parametros['datos'][0]['password'];
-
-                            //Discriminamos entre roles para dar paso a una u otra parte de la pagina.
-                            if ($_SESSION['rol'] == 0) {
-                                $this->view->show("homeAdmin", $parametros);
+                    if($arr['success']){
+                        $login = $_POST['login'];
+                        $password = sha1($_POST['password']);
+        
+                        //Preguntamos por el usuario y contraseña a la bbdd para saber si son correcto o no
+                        $resultado = $this->modelo->isUser([
+                            'login' => $login,
+                            'password' => $password
+                        ]);
+        
+                        if ($resultado['correcto']) {
+                            //Preguntamos si el usuario esta validado pasando su nombre de usuario.
+                            $datos = $this->modelo->userActivado($login);
+        
+                            //Se crea sesión del usuario
+                            $_SESSION['login'] = $login;
+                            //Guardamos su id y rol.
+                            $_SESSION['id'] = $datos['datos']['id'];
+                            $_SESSION['rol'] = $datos['datos']['rol'];
+        
+        
+                            //Si el rol es diferente a 2, sigue adelante. El 2 falta por activarlo.
+                            if ($_SESSION['rol'] != 2) {
+        
+                                //Si el usuario y contraseña son correctos:
+                                if ($resultado['correcto'] == TRUE) {
+        
+                                    //Implementación de la funcion recuerdame que guarda en usuario y contraseña en cookies. 
+                                    if (isset($_POST['recuerdo']) && ($_POST['recuerdo'] == "on")) { // Creamos las cookies para ambas variables
+                                        setcookie('login', $login, time() + (15 * 24 * 60 * 60));
+                                        setcookie('password', $_POST['password'], time() + (15 * 24 * 60 * 60));
+                                        setcookie('recuerdo', $_POST['recuerdo'], time() + (15 * 24 * 60 * 60));
+                                    } else { // Eliminamos las cookies vaciandolas
+                                        if (isset($_COOKIE['login'])) {
+                                            setcookie('login', "");
+                                        }
+                                        if (isset($_COOKIE['password'])) {
+                                            setcookie('password', "");
+                                        }
+                                        if (isset($_COOKIE['recuerdo'])) {
+                                            setcookie('recuerdo', "");
+                                        }
+                                    }
+        
+                                    $parametros['datos'] = $resultado['datos'];
+                                    //Actualizamos las variables de sesion con toda la informacion del usuario.
+                                    $_SESSION['nif'] = $parametros['datos'][0]['nif'];
+                                    $_SESSION['nombre'] = $parametros['datos'][0]['nombre'];
+                                    $_SESSION['apellido1'] = $parametros['datos'][0]['apellido1'];
+                                    $_SESSION['apellido2'] = $parametros['datos'][0]['apellido2'];
+                                    $_SESSION['email'] = $parametros['datos'][0]['email'];
+                                    $_SESSION['telefono'] = $parametros['datos'][0]['telefono'];
+                                    $_SESSION['direccion'] = $parametros['datos'][0]['direccion'];
+                                    $_SESSION['imagen'] = $parametros['datos'][0]['imagen'];
+                                    $_SESSION['password'] = $parametros['datos'][0]['password'];
+        
+                                    //Discriminamos entre roles para dar paso a una u otra parte de la pagina.
+                                    if ($_SESSION['rol'] == 0) {
+                                        $this->view->show("homeAdmin", $parametros);
+                                    }
+                                    if ($_SESSION['rol'] == 1) {
+                                        $this->view->show("homeUsuario", $parametros);
+                                    }
+        
+                                    //Si el usuario y contraseña NO son correctos:
+                                } else {
+                                    $this->mensajes[] = [
+                                        "tipo" => "danger",
+                                        "mensaje" => "Usuario o contraseña incorrectos"
+                                    ];
+                                    $parametros["mensajes"] = $this->mensajes;
+        
+                                    $this->view->show("Login", $parametros);
+                                }
+                                //Si el usuario no esta validado.
+                            } else {
+                                $this->mensajes[] = [
+                                    "tipo" => "warning",
+                                    "mensaje" => "Usuario no está activado aún, espere que el administrador lo active."
+                                ];
+                                $parametros["mensajes"] = $this->mensajes;
+        
+                                $this->view->show("Login", $parametros);
                             }
-                            if ($_SESSION['rol'] == 1) {
-                                $this->view->show("homeUsuario", $parametros);
-                            }
-
-                            //Si el usuario y contraseña NO son correctos:
                         } else {
                             $this->mensajes[] = [
                                 "tipo" => "danger",
                                 "mensaje" => "Usuario o contraseña incorrectos"
                             ];
                             $parametros["mensajes"] = $this->mensajes;
-
+        
                             $this->view->show("Login", $parametros);
                         }
-                        //Si el usuario no esta validado.
+
                     } else {
                         $this->mensajes[] = [
-                            "tipo" => "warning",
-                            "mensaje" => "Usuario no está activado aún, espere que el administrador lo active."
+                            "tipo" => "danger",
+                            "mensaje" => "No has validado el Captcha"
                         ];
                         $parametros["mensajes"] = $this->mensajes;
-
+        
                         $this->view->show("Login", $parametros);
-                    }
-                } else {
-                    $this->mensajes[] = [
-                        "tipo" => "danger",
-                        "mensaje" => "Usuario o contraseña incorrectos"
-                    ];
-                    $parametros["mensajes"] = $this->mensajes;
 
-                    $this->view->show("Login", $parametros);
+                    }
                 }
+
+
+               
             }
-        //Si no se ha pulsado dl boton de submit:   
+            //Si no se ha pulsado dl boton de submit:   
         } else {
             $this->view->show("Login");
         }
     }
-
+    
+    /**
+     * Método que registra un nuevo usuario a la base de datos
+     *
+     * @return void
+     */
     public function registrar()
     {
 
@@ -297,12 +344,12 @@ class LoginController extends BaseController
                     'rol' => $rol
                 ]);
                 if ($resultModelo["correcto"]) :
-                    $this->mensajes[] = [
+                    $this->correcto[] = [
                         "tipo" => "success",
                         "mensaje" => "El usuarios se registró correctamente!! ESPERA A QUE UN ADMIN TE VALIDE :)"
                     ];
                 else :
-                    $this->mensajes[] = [
+                    $this->correcto[] = [
                         "tipo" => "danger",
                         "mensaje" => "El usuario no pudo registrarse!! :( <br />({$resultModelo["error"]})"
                     ];
@@ -336,6 +383,7 @@ class LoginController extends BaseController
                 'rol' => $rol
             ],
             "mensajes" => $this->mensajes,
+            "correcto" => $this->correcto
 
         ];
         //Mostramos la vista actuser
