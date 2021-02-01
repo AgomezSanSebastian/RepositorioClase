@@ -1,0 +1,3482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="../">
+    <link rel="icon" href="images/favicon.ico"/>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/base.css">
+            <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/template.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css" integrity="sha256-ybRkN9dBjhcS2qrW1z+hfCxq+1aBdwyQM5wlQoQVt/0=" crossorigin="anonymous" />
+                <script src="https://cdn.jsdelivr.net/npm/fuse.js@3.4.6"></script>
+        <script src="https://cdn.jsdelivr.net/npm/css-vars-ponyfill@2"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/js/all.min.js" integrity="sha256-0vuk8LXoyrmCjp1f0O300qo1M75ZQyhH9X3J6d+scmk=" crossorigin="anonymous"></script>
+        <script src="js/search.js"></script>
+        <script defer src="js/searchIndex.js"></script>
+    </head>
+<body id="top">
+    <header class="phpdocumentor-header phpdocumentor-section">
+    <h1 class="phpdocumentor-title"><a href="" class="phpdocumentor-title__link">Documentation</a></h1>
+    <input class="phpdocumentor-header__menu-button" type="checkbox" id="menu-button" name="menu-button" />
+    <label class="phpdocumentor-header__menu-icon" for="menu-button">
+        <i class="fas fa-bars"></i>
+    </label>
+    <section data-search-form class="phpdocumentor-search">
+    <label>
+        <span class="visually-hidden">Search for</span>
+        <svg class="phpdocumentor-search__icon" width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="7.5" cy="7.5" r="6.5" stroke="currentColor" stroke-width="2"/>
+            <line x1="12.4892" y1="12.2727" x2="19.1559" y2="18.9393" stroke="currentColor" stroke-width="3"/>
+        </svg>
+        <input type="search" class="phpdocumentor-field phpdocumentor-search__field" placeholder="Loading .." disabled />
+    </label>
+</section>
+
+    <nav class="phpdocumentor-topnav">
+    <ul class="phpdocumentor-topnav__menu">
+        </ul>
+</nav>
+</header>
+
+    <main class="phpdocumentor">
+        <div class="phpdocumentor-section">
+            <input class="phpdocumentor-sidebar__menu-button" type="checkbox" id="sidebar-button" name="sidebar-button" />
+<label class="phpdocumentor-sidebar__menu-icon" for="sidebar-button">
+    Menu
+</label>
+<aside class="phpdocumentor-column -four phpdocumentor-sidebar">
+    
+    <section class="phpdocumentor-sidebar__category">
+        <h2 class="phpdocumentor-sidebar__category-header">Namespaces</h2>
+                                <h3 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/default.html"><abbr title="\">Global</abbr></a></h3>
+                                    </section>
+
+    
+    <section class="phpdocumentor-sidebar__category">
+        <h2 class="phpdocumentor-sidebar__category-header">Reports</h2>
+                <h3 class="phpdocumentor-sidebar__root-package"><a href="reports/deprecated.html">Deprecated</a></h3>
+        <h3 class="phpdocumentor-sidebar__root-package"><a href="reports/errors.html">Errors</a></h3>
+        <h3 class="phpdocumentor-sidebar__root-package"><a href="reports/markers.html">Markers</a></h3>
+    </section>
+
+    <section class="phpdocumentor-sidebar__category">
+        <h2 class="phpdocumentor-sidebar__category-header">Indices</h2>
+        <h3 class="phpdocumentor-sidebar__root-package"><a href="indices/files.html">Files</a></h3>
+    </section>
+</aside>
+
+            <div class="phpdocumentor-column -eight phpdocumentor-content">
+                    <ul class="phpdocumentor-breadcrumbs">
+            <li class="phpdocumentor-breadcrumb"><a href="packages/Default.html">Default</a></li>
+    </ul>
+
+    <article class="phpdocumentor-element -class">
+        <h2 class="phpdocumentor-content__title">
+    UserModel
+
+        <span class="phpdocumentor-element__extends">
+        extends <a href="classes/BaseModel.html"><abbr title="\BaseModel">BaseModel</abbr></a>
+    </span>
+    
+    
+    
+    </h2>
+
+        <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">8</span>
+</aside>
+
+            <p class="phpdocumentor-summary">Clase &#039;UserModel&#039; que implementa el modelo de usuarios de nuestra aplicación en una
+arquitectura MVC. Se encarga de gestionar el acceso a la tabla usuarios</p>
+
+    <section class="phpdocumentor-description"></section>
+
+
+
+
+
+
+
+
+<h3 id="toc">
+    Table of Contents
+    <a href="#toc" class="headerlink"><i class="fas fa-link"></i></a>
+</h3>
+
+<dl class="phpdocumentor-table-of-contents">
+                <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/BaseModel.html#property_db">$db</a>
+    <span>
+                &nbsp;: mixed            </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/BaseModel.html#property_table">$table</a>
+    <span>
+                &nbsp;: string            </span>
+</dt>
+<dd>Tabla asociada al modelo</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -private">
+    <a href="classes/UserModel.html#property_apellido1">$apellido1</a>
+    <span>
+                &nbsp;: mixed            </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -private">
+    <a href="classes/UserModel.html#property_apellido2">$apellido2</a>
+    <span>
+                &nbsp;: mixed            </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -private">
+    <a href="classes/UserModel.html#property_direccion">$direccion</a>
+    <span>
+                &nbsp;: mixed            </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -private">
+    <a href="classes/UserModel.html#property_email">$email</a>
+    <span>
+                &nbsp;: mixed            </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -private">
+    <a href="classes/UserModel.html#property_id">$id</a>
+    <span>
+                &nbsp;: mixed            </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -private">
+    <a href="classes/UserModel.html#property_imagen">$imagen</a>
+    <span>
+                &nbsp;: mixed            </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -private">
+    <a href="classes/UserModel.html#property_login">$login</a>
+    <span>
+                &nbsp;: mixed            </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -private">
+    <a href="classes/UserModel.html#property_nif">$nif</a>
+    <span>
+                &nbsp;: mixed            </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -private">
+    <a href="classes/UserModel.html#property_nombre">$nombre</a>
+    <span>
+                &nbsp;: mixed            </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -private">
+    <a href="classes/UserModel.html#property_password">$password</a>
+    <span>
+                &nbsp;: mixed            </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -private">
+    <a href="classes/UserModel.html#property_rol">$rol</a>
+    <span>
+                &nbsp;: mixed            </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -private">
+    <a href="classes/UserModel.html#property_telefono">$telefono</a>
+    <span>
+                &nbsp;: mixed            </span>
+</dt>
+<dd></dd>
+
+                <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method___construct">__construct()</a>
+    <span>
+                        &nbsp;: mixed    </span>
+</dt>
+<dd>Se conecta a la base de datos</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_actuser">actuser()</a>
+    <span>
+                        &nbsp;: <abbr title="\type">type</abbr>    </span>
+</dt>
+<dd>Método que actualiza un usuario</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_adduser">adduser()</a>
+    <span>
+                        &nbsp;: <abbr title="\type">type</abbr>    </span>
+</dt>
+<dd>Añadir un nuevo usuario a la lista</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_agregaActivHorario">agregaActivHorario()</a>
+    <span>
+                        &nbsp;: void    </span>
+</dt>
+<dd>Funcion que agrega una actividad al horario</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_agregaMensaje">agregaMensaje()</a>
+    <span>
+                        &nbsp;: void    </span>
+</dt>
+<dd>Agregamos un nuevo mensaje a la bd</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_agregarActiv">agregarActiv()</a>
+    <span>
+                        &nbsp;: void    </span>
+</dt>
+<dd>Función que agrega a la BD una actividad</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_apuntarUsuarioClase">apuntarUsuarioClase()</a>
+    <span>
+                        &nbsp;: void    </span>
+</dt>
+<dd>Función donde un usuario puede apuntarte a una clase específica</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_buscarPerfil">buscarPerfil()</a>
+    <span>
+                        &nbsp;: void    </span>
+</dt>
+<dd>Muestra todos los datos de un usuario pasado por parámetro</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_cambiarRolUser">cambiarRolUser()</a>
+    <span>
+                        &nbsp;: <abbr title="\type">type</abbr>    </span>
+</dt>
+<dd>Cambia el rol del usuario, pasa a de usuario normal a administrador o al revés</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_delActiv">delActiv()</a>
+    <span>
+                        &nbsp;: bool    </span>
+</dt>
+<dd>Método que elimina la actividad cuyo id es el que se le pasa como parámetro</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/BaseModel.html#method_deleteBy">deleteBy()</a>
+    <span>
+                        &nbsp;: mixed    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/BaseModel.html#method_deleteById">deleteById()</a>
+    <span>
+                        &nbsp;: mixed    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_delHorarioActiv">delHorarioActiv()</a>
+    <span>
+                        &nbsp;: void    </span>
+</dt>
+<dd>Función que borra del horario una actividad</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_deluser">deluser()</a>
+    <span>
+                        &nbsp;: bool    </span>
+</dt>
+<dd>Método que elimina el usuario cuyo id es el que se le pasa como parámetro</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_editarActividad">editarActividad()</a>
+    <span>
+                        &nbsp;: void    </span>
+</dt>
+<dd>Función que modifica una actividad de la BD</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_estaApuntadoClase">estaApuntadoClase()</a>
+    <span>
+                        &nbsp;: void    </span>
+</dt>
+<dd>Comprueba si un usurio esta apuntado a una actividad</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_faltaPorActivar">faltaPorActivar()</a>
+    <span>
+                        &nbsp;: void    </span>
+</dt>
+<dd>Lista de usurios nuevos que aún no han sido activados</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/BaseModel.html#method_getAll">getAll()</a>
+    <span>
+                        &nbsp;: void    </span>
+</dt>
+<dd>Método genérico para obtener todos los registros de la tabla $table</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_getApellido1">getApellido1()</a>
+    <span>
+                        &nbsp;: mixed    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_getApellido2">getApellido2()</a>
+    <span>
+                        &nbsp;: mixed    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/BaseModel.html#method_getBy">getBy()</a>
+    <span>
+                        &nbsp;: mixed    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/BaseModel.html#method_getById">getById()</a>
+    <span>
+                        &nbsp;: mixed    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_getDireccion">getDireccion()</a>
+    <span>
+                        &nbsp;: mixed    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_getEmail">getEmail()</a>
+    <span>
+                        &nbsp;: mixed    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_getId">getId()</a>
+    <span>
+                        &nbsp;: mixed    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_getImagen">getImagen()</a>
+    <span>
+                        &nbsp;: mixed    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_getLogin">getLogin()</a>
+    <span>
+                        &nbsp;: mixed    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_getNif">getNif()</a>
+    <span>
+                        &nbsp;: mixed    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_getNombre">getNombre()</a>
+    <span>
+                        &nbsp;: mixed    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_getPassword">getPassword()</a>
+    <span>
+                        &nbsp;: mixed    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_getRol">getRol()</a>
+    <span>
+                        &nbsp;: mixed    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_getTelefono">getTelefono()</a>
+    <span>
+                        &nbsp;: mixed    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_isUser">isUser()</a>
+    <span>
+                        &nbsp;: array&lt;string|int, mixed&gt;    </span>
+</dt>
+<dd>Comprobar si el usuario son de la base de datos. Para ello obtiene como parámetros 2 valores,
+el login y el password.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_listaAct">listaAct()</a>
+    <span>
+                        &nbsp;: void    </span>
+</dt>
+<dd>Función que devuelve una actividad que coincida con el parámetro que se le haya enviado</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_listado">listado()</a>
+    <span>
+                        &nbsp;: <abbr title="\type">type</abbr>    </span>
+</dt>
+<dd>Función que realiza el listado de todos los usuarios registrados
+Devuelve un array asociativo con tres campos:
+-&#039;correcto&#039;: indica si el listado se realizó correctamente o no.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_listadoClasesUsuario">listadoClasesUsuario()</a>
+    <span>
+                        &nbsp;: void    </span>
+</dt>
+<dd>Función donde lista todas las clases apuntadas por un usario específico pasado por parámetros</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_listarActiv">listarActiv()</a>
+    <span>
+                        &nbsp;: void    </span>
+</dt>
+<dd>Funcion que devuelve un array con todas las actividades que tenemos</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_listarClasesPrimera">listarClasesPrimera()</a>
+    <span>
+                        &nbsp;: void    </span>
+</dt>
+<dd>Lista la primera clase de la lista de ID</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_listarClasesUsuarios">listarClasesUsuarios()</a>
+    <span>
+                        &nbsp;: void    </span>
+</dt>
+<dd>Lista los usuarios con el id pasado por parametros del tramo_Horario</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_listarHorario">listarHorario()</a>
+    <span>
+                        &nbsp;: void    </span>
+</dt>
+<dd>Función que devuelve un array con todas las activides que tenemos en el horario</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_listarMensajes">listarMensajes()</a>
+    <span>
+                        &nbsp;: void    </span>
+</dt>
+<dd>Muestra todos los usuarios y  mensajes recibidos</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_listaUsuario">listaUsuario()</a>
+    <span>
+                        &nbsp;: void    </span>
+</dt>
+<dd>Lista el usuario con el id específico</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_paginarUsuarios">paginarUsuarios()</a>
+    <span>
+                        &nbsp;: void    </span>
+</dt>
+<dd>Función que consigo los datos necesarios para poder hacer una paginación por parte
+del administrador. Sobre la table usuarios activos de la base de datos.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_paginarUsuariosBuscar">paginarUsuariosBuscar()</a>
+    <span>
+                        &nbsp;: void    </span>
+</dt>
+<dd>Función que busca alguna coincidencia con el parámetro @palabra. A parte
+también hace la paginación.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_setApellido1">setApellido1()</a>
+    <span>
+                        &nbsp;: mixed    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_setApellido2">setApellido2()</a>
+    <span>
+                        &nbsp;: mixed    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_setDireccion">setDireccion()</a>
+    <span>
+                        &nbsp;: mixed    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_setEmail">setEmail()</a>
+    <span>
+                        &nbsp;: mixed    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_setId">setId()</a>
+    <span>
+                        &nbsp;: mixed    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_setImagen">setImagen()</a>
+    <span>
+                        &nbsp;: mixed    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/BaseModel.html#method_setLog">setLog()</a>
+    <span>
+                        &nbsp;: mixed    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_setLogin">setLogin()</a>
+    <span>
+                        &nbsp;: mixed    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_setNif">setNif()</a>
+    <span>
+                        &nbsp;: mixed    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_setNombre">setNombre()</a>
+    <span>
+                        &nbsp;: mixed    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_setPassword">setPassword()</a>
+    <span>
+                        &nbsp;: mixed    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_setRol">setRol()</a>
+    <span>
+                        &nbsp;: mixed    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_setTelefono">setTelefono()</a>
+    <span>
+                        &nbsp;: mixed    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/UserModel.html#method_userActivado">userActivado()</a>
+    <span>
+                        &nbsp;: void    </span>
+</dt>
+<dd>Función que comprueba si el usuario está activado o no</dd>
+
+        </dl>
+
+
+
+        
+
+        
+    <section class="phpdocumentor-properties">
+        <h3 class="phpdocumentor-elements__header" id="properties">
+            Properties
+            <a href="classes/UserModel.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
+        </h3>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_db">
+        $db
+        <a href="classes/BaseModel.html#property_db" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/core/BaseModel.php"><a href="files/gym-core-basemodel.html"><abbr title="GYM/core/BaseModel.php">BaseModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">13</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">$db</span>
+    </code>
+
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_table">
+        $table
+        <a href="classes/BaseModel.html#property_table" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/core/BaseModel.php"><a href="files/gym-core-basemodel.html"><abbr title="GYM/core/BaseModel.php">BaseModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">12</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Tabla asociada al modelo</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type">string</span>
+    <span class="phpdocumentor-signature__name">$table</span>
+    </code>
+
+        <section class="phpdocumentor-description"></section>
+
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_apellido1">
+        $apellido1
+        <a href="classes/UserModel.html#property_apellido1" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">17</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">$apellido1</span>
+    </code>
+
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_apellido2">
+        $apellido2
+        <a href="classes/UserModel.html#property_apellido2" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">19</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">$apellido2</span>
+    </code>
+
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_direccion">
+        $direccion
+        <a href="classes/UserModel.html#property_direccion" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">29</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">$direccion</span>
+    </code>
+
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_email">
+        $email
+        <a href="classes/UserModel.html#property_email" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">21</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">$email</span>
+    </code>
+
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_id">
+        $id
+        <a href="classes/UserModel.html#property_id" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">11</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">$id</span>
+    </code>
+
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_imagen">
+        $imagen
+        <a href="classes/UserModel.html#property_imagen" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">31</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">$imagen</span>
+    </code>
+
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_login">
+        $login
+        <a href="classes/UserModel.html#property_login" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">23</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">$login</span>
+    </code>
+
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_nif">
+        $nif
+        <a href="classes/UserModel.html#property_nif" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">13</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">$nif</span>
+    </code>
+
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_nombre">
+        $nombre
+        <a href="classes/UserModel.html#property_nombre" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">15</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">$nombre</span>
+    </code>
+
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_password">
+        $password
+        <a href="classes/UserModel.html#property_password" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">25</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">$password</span>
+    </code>
+
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_rol">
+        $rol
+        <a href="classes/UserModel.html#property_rol" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">33</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">$rol</span>
+    </code>
+
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_telefono">
+        $telefono
+        <a href="classes/UserModel.html#property_telefono" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">27</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">$telefono</span>
+    </code>
+
+    
+    
+
+</article>
+            </section>
+
+            <section class="phpdocumentor-methods">
+        <h3 class="phpdocumentor-elements__header" id="methods">
+            Methods
+            <a href="classes/UserModel.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
+        </h3>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method___construct">
+        __construct()
+        <a href="classes/UserModel.html#method___construct" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">35</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Se conecta a la base de datos</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_actuser">
+        actuser()
+        <a href="classes/UserModel.html#method_actuser" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">289</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Método que actualiza un usuario</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">actuser</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\type">type</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$datos</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\type">type</abbr></span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$datos</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\type">type</abbr></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type"><abbr title="\type">type</abbr></span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_adduser">
+        adduser()
+        <a href="classes/UserModel.html#method_adduser" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">242</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Añadir un nuevo usuario a la lista</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">adduser</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\type">type</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$datos</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\type">type</abbr></span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$datos</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\type">type</abbr></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type"><abbr title="\type">type</abbr></span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_agregaActivHorario">
+        agregaActivHorario()
+        <a href="classes/UserModel.html#method_agregaActivHorario" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">757</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Funcion que agrega una actividad al horario</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">agregaActivHorario</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$datos</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$datos</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">void</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_agregaMensaje">
+        agregaMensaje()
+        <a href="classes/UserModel.html#method_agregaMensaje" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">1032</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Agregamos un nuevo mensaje a la bd</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">agregaMensaje</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$datos</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$datos</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">void</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_agregarActiv">
+        agregarActiv()
+        <a href="classes/UserModel.html#method_agregarActiv" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">567</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Función que agrega a la BD una actividad</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">agregarActiv</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$datos</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$datos</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">void</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_apuntarUsuarioClase">
+        apuntarUsuarioClase()
+        <a href="classes/UserModel.html#method_apuntarUsuarioClase" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">947</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Función donde un usuario puede apuntarte a una clase específica</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">apuntarUsuarioClase</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$datos</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$datos</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">void</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_buscarPerfil">
+        buscarPerfil()
+        <a href="classes/UserModel.html#method_buscarPerfil" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">368</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Muestra todos los datos de un usuario pasado por parámetro</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">buscarPerfil</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$login</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$login</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">void</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_cambiarRolUser">
+        cambiarRolUser()
+        <a href="classes/UserModel.html#method_cambiarRolUser" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">400</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Cambia el rol del usuario, pasa a de usuario normal a administrador o al revés</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">cambiarRolUser</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\type">type</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$datos</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\type">type</abbr></span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$datos</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\type">type</abbr></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type"><abbr title="\type">type</abbr></span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_delActiv">
+        delActiv()
+        <a href="classes/UserModel.html#method_delActiv" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">679</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Método que elimina la actividad cuyo id es el que se le pasa como parámetro</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">delActiv</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href=""><abbr title=""></abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$id</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$id</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href=""><abbr title=""></abbr></a></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>es un valor numérico. Es el campo clave de la tabla</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">bool</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_deleteBy">
+        deleteBy()
+        <a href="classes/BaseModel.html#method_deleteBy" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/core/BaseModel.php"><a href="files/gym-core-basemodel.html"><abbr title="GYM/core/BaseModel.php">BaseModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">71</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">deleteBy</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$column</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$column</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$value</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_deleteById">
+        deleteById()
+        <a href="classes/BaseModel.html#method_deleteById" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/core/BaseModel.php"><a href="files/gym-core-basemodel.html"><abbr title="GYM/core/BaseModel.php">BaseModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">65</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">deleteById</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$id</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$id</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_delHorarioActiv">
+        delHorarioActiv()
+        <a href="classes/UserModel.html#method_delHorarioActiv" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">797</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Función que borra del horario una actividad</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">delHorarioActiv</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$id</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$id</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">void</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_deluser">
+        deluser()
+        <a href="classes/UserModel.html#method_deluser" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">203</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Método que elimina el usuario cuyo id es el que se le pasa como parámetro</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">deluser</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href=""><abbr title=""></abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$id</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$id</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href=""><abbr title=""></abbr></a></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>es un valor numérico. Es el campo clave de la tabla</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">bool</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_editarActividad">
+        editarActividad()
+        <a href="classes/UserModel.html#method_editarActividad" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">606</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Función que modifica una actividad de la BD</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">editarActividad</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$datos</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$datos</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">void</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_estaApuntadoClase">
+        estaApuntadoClase()
+        <a href="classes/UserModel.html#method_estaApuntadoClase" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">913</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Comprueba si un usurio esta apuntado a una actividad</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">estaApuntadoClase</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$tramo_id</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$usuario_id</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$tramo_id</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$usuario_id</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">void</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_faltaPorActivar">
+        faltaPorActivar()
+        <a href="classes/UserModel.html#method_faltaPorActivar" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">437</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Lista de usurios nuevos que aún no han sido activados</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">faltaPorActivar</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">void</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getAll">
+        getAll()
+        <a href="classes/BaseModel.html#method_getAll" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/core/BaseModel.php"><a href="files/gym-core-basemodel.html"><abbr title="GYM/core/BaseModel.php">BaseModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">28</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Método genérico para obtener todos los registros de la tabla $table</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">getAll</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">void</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getApellido1">
+        getApellido1()
+        <a href="classes/UserModel.html#method_getApellido1" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">72</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">getApellido1</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getApellido2">
+        getApellido2()
+        <a href="classes/UserModel.html#method_getApellido2" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">82</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">getApellido2</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getBy">
+        getBy()
+        <a href="classes/BaseModel.html#method_getBy" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/core/BaseModel.php"><a href="files/gym-core-basemodel.html"><abbr title="GYM/core/BaseModel.php">BaseModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">53</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">getBy</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$column</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$column</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$value</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getById">
+        getById()
+        <a href="classes/BaseModel.html#method_getById" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/core/BaseModel.php"><a href="files/gym-core-basemodel.html"><abbr title="GYM/core/BaseModel.php">BaseModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">41</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">getById</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$id</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$id</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getDireccion">
+        getDireccion()
+        <a href="classes/UserModel.html#method_getDireccion" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">132</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">getDireccion</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getEmail">
+        getEmail()
+        <a href="classes/UserModel.html#method_getEmail" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">92</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">getEmail</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getId">
+        getId()
+        <a href="classes/UserModel.html#method_getId" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">42</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">getId</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getImagen">
+        getImagen()
+        <a href="classes/UserModel.html#method_getImagen" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">142</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">getImagen</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getLogin">
+        getLogin()
+        <a href="classes/UserModel.html#method_getLogin" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">102</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">getLogin</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getNif">
+        getNif()
+        <a href="classes/UserModel.html#method_getNif" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">52</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">getNif</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getNombre">
+        getNombre()
+        <a href="classes/UserModel.html#method_getNombre" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">62</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">getNombre</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getPassword">
+        getPassword()
+        <a href="classes/UserModel.html#method_getPassword" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">112</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">getPassword</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getRol">
+        getRol()
+        <a href="classes/UserModel.html#method_getRol" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">152</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">getRol</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getTelefono">
+        getTelefono()
+        <a href="classes/UserModel.html#method_getTelefono" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">122</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">getTelefono</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_isUser">
+        isUser()
+        <a href="classes/UserModel.html#method_isUser" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">467</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Comprobar si el usuario son de la base de datos. Para ello obtiene como parámetros 2 valores,
+el login y el password.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">isUser</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\type">type</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$datos</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$datos</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\type">type</abbr></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+            &mdash;
+            <section class="phpdocumentor-description"><p>con 1 bool y mensaje de error si lo hubiera</p>
+</section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_listaAct">
+        listaAct()
+        <a href="classes/UserModel.html#method_listaAct" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">646</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Función que devuelve una actividad que coincida con el parámetro que se le haya enviado</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">listaAct</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$id</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$id</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">void</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_listado">
+        listado()
+        <a href="classes/UserModel.html#method_listado" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">174</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Función que realiza el listado de todos los usuarios registrados
+Devuelve un array asociativo con tres campos:
+-&#039;correcto&#039;: indica si el listado se realizó correctamente o no.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">listado</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\type">type</abbr></span></code>
+
+        <section class="phpdocumentor-description"><p>-'datos': almacena todos los datos obtenidos de la consulta.
+-'error': almacena el mensaje asociado a una situación errónea (excepción)</p>
+</section>
+
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type"><abbr title="\type">type</abbr></span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_listadoClasesUsuario">
+        listadoClasesUsuario()
+        <a href="classes/UserModel.html#method_listadoClasesUsuario" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">988</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Función donde lista todas las clases apuntadas por un usario específico pasado por parámetros</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">listadoClasesUsuario</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$id</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$id</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">void</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_listarActiv">
+        listarActiv()
+        <a href="classes/UserModel.html#method_listarActiv" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">536</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Funcion que devuelve un array con todas las actividades que tenemos</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">listarActiv</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">void</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_listarClasesPrimera">
+        listarClasesPrimera()
+        <a href="classes/UserModel.html#method_listarClasesPrimera" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">837</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Lista la primera clase de la lista de ID</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">listarClasesPrimera</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">void</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_listarClasesUsuarios">
+        listarClasesUsuarios()
+        <a href="classes/UserModel.html#method_listarClasesUsuarios" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">872</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Lista los usuarios con el id pasado por parametros del tramo_Horario</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">listarClasesUsuarios</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$id</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$id</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">void</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_listarHorario">
+        listarHorario()
+        <a href="classes/UserModel.html#method_listarHorario" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">724</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Función que devuelve un array con todas las activides que tenemos en el horario</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">listarHorario</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">void</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_listarMensajes">
+        listarMensajes()
+        <a href="classes/UserModel.html#method_listarMensajes" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">1070</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Muestra todos los usuarios y  mensajes recibidos</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">listarMensajes</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$usu_destino</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$usu_destino</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">void</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_listaUsuario">
+        listaUsuario()
+        <a href="classes/UserModel.html#method_listaUsuario" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">334</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Lista el usuario con el id específico</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">listaUsuario</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$id</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$id</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">void</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_paginarUsuarios">
+        paginarUsuarios()
+        <a href="classes/UserModel.html#method_paginarUsuarios" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">1113</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Función que consigo los datos necesarios para poder hacer una paginación por parte
+del administrador. Sobre la table usuarios activos de la base de datos.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">paginarUsuarios</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$regsxpag</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$offset</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$regsxpag</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$offset</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">void</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_paginarUsuariosBuscar">
+        paginarUsuariosBuscar()
+        <a href="classes/UserModel.html#method_paginarUsuariosBuscar" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">1156</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Función que busca alguna coincidencia con el parámetro @palabra. A parte
+también hace la paginación.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">paginarUsuariosBuscar</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$regsxpag</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$offset</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$palabra</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$regsxpag</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$offset</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$palabra</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">void</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setApellido1">
+        setApellido1()
+        <a href="classes/UserModel.html#method_setApellido1" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">77</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">setApellido1</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$apellido1</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$apellido1</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setApellido2">
+        setApellido2()
+        <a href="classes/UserModel.html#method_setApellido2" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">87</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">setApellido2</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$apellido2</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$apellido2</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setDireccion">
+        setDireccion()
+        <a href="classes/UserModel.html#method_setDireccion" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">137</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">setDireccion</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$direccion</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$direccion</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setEmail">
+        setEmail()
+        <a href="classes/UserModel.html#method_setEmail" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">97</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">setEmail</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$email</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$email</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setId">
+        setId()
+        <a href="classes/UserModel.html#method_setId" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">47</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">setId</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$id</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$id</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setImagen">
+        setImagen()
+        <a href="classes/UserModel.html#method_setImagen" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">147</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">setImagen</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$imagen</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$imagen</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setLog">
+        setLog()
+        <a href="classes/BaseModel.html#method_setLog" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/core/BaseModel.php"><a href="files/gym-core-basemodel.html"><abbr title="GYM/core/BaseModel.php">BaseModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">76</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">setLog</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$user_id</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$action</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$description</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$user_id</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$action</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$description</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setLogin">
+        setLogin()
+        <a href="classes/UserModel.html#method_setLogin" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">107</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">setLogin</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$login</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$login</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setNif">
+        setNif()
+        <a href="classes/UserModel.html#method_setNif" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">57</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">setNif</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$nif</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$nif</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setNombre">
+        setNombre()
+        <a href="classes/UserModel.html#method_setNombre" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">67</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">setNombre</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$nombre</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$nombre</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setPassword">
+        setPassword()
+        <a href="classes/UserModel.html#method_setPassword" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">117</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">setPassword</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$password</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$password</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setRol">
+        setRol()
+        <a href="classes/UserModel.html#method_setRol" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">157</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">setRol</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$rol</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$rol</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setTelefono">
+        setTelefono()
+        <a href="classes/UserModel.html#method_setTelefono" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">127</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">setTelefono</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$telefono</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$telefono</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_userActivado">
+        userActivado()
+        <a href="classes/UserModel.html#method_userActivado" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="GYM/modelos/UserModel.php"><a href="files/gym-modelos-usermodel.html"><abbr title="GYM/modelos/UserModel.php">UserModel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">501</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Función que comprueba si el usuario está activado o no</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">userActivado</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$login</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$login</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">void</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+            </section>
+
+    </article>
+                <section data-search-results class="phpdocumentor-search-results phpdocumentor-search-results--hidden">
+    <section class="phpdocumentor-search-results__dialog">
+        <header class="phpdocumentor-search-results__header">
+            <h2 class="phpdocumentor-search-results__title">Search results</h2>
+            <button class="phpdocumentor-search-results__close"><i class="fas fa-times"></i></button>
+        </header>
+        <section class="phpdocumentor-search-results__body">
+            <ul class="phpdocumentor-search-results__entries"></ul>
+        </section>
+    </section>
+</section>
+            </div>
+        </div>
+        <a href="classes/UserModel.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+
+    </main>
+
+    <script>
+        cssVars({});
+    </script>
+</body>
+</html>
